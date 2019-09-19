@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         button3.layer.borderColor = UIColor.lightGray.cgColor
         
         askQuestion(action: nil)
-
     }
 
     func askQuestion(action: UIAlertAction!) {
@@ -43,7 +42,7 @@ class ViewController: UIViewController {
         
         correctAnswer = Int.random(in: 0...2)
         
-        title = countries[correctAnswer].uppercased()
+        title = "Current score: \(score) Q: \(countries[correctAnswer].uppercased())"
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
