@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
+    var questionsAnswered = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
+        var message: String
         
         if sender.tag == correctAnswer {
             title = "Correct"
@@ -56,7 +58,16 @@ class ViewController: UIViewController {
             score -= 1
         }
         
-        let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .alert)
+        questionsAnswered += 1
+        if questionsAnswered == 10 {
+            message = "Your final score is \(score). Thank you for playing!"
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+        } else {
+            message = "Your score is \(score)."
+        }
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
         present(ac, animated: true)
     }
