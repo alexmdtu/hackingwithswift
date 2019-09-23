@@ -24,6 +24,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let url = URL(string: "https://" + websites[0])!
+        webView.load(URLRequest(url: url))
+        webView.allowsBackForwardNavigationGestures = true
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
         
         progressView = UIProgressView(progressViewStyle: .default)
@@ -31,13 +35,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let progressButton = UIBarButtonItem(customView: progressView)
         
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(webView.reload))
-        toolbarItems = [progressButton, spacer, refresh]
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
+        let back = UIBarButtonItem(title: "Back", style: .plain, target: webView, action: #selector(webView.goBack))
+        let forward = UIBarButtonItem(title: "Forward", style: .plain, target: webView, action: #selector(webView.goForward))
+        toolbarItems = [progressButton, back, spacer, forward, refresh]
         navigationController?.isToolbarHidden = false
         
-        let url = URL(string: "https://" + websites[0])!
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
+
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
     }
@@ -78,6 +82,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
                 }
             }
         }
+        let ac = UIAlertController(title: "Illegal website", message: "You're not allowed to browse to this website", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(ac, animated: true)
         decisionHandler(.cancel)
     }
 }
