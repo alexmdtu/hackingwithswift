@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA1663F62338D7150066D87A /* TableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1663F52338D7150066D87A /* TableTableViewController.swift */; };
 		FAA09BBB23381FF40031A5B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA09BBA23381FF40031A5B2 /* AppDelegate.swift */; };
 		FAA09BBD23381FF40031A5B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA09BBC23381FF40031A5B2 /* ViewController.swift */; };
 		FAA09BC023381FF40031A5B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA09BBE23381FF40031A5B2 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA1663F52338D7150066D87A /* TableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTableViewController.swift; sourceTree = "<group>"; };
 		FAA09BB723381FF40031A5B2 /* Project4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA09BBA23381FF40031A5B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAA09BBC23381FF40031A5B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				FAA09BBA23381FF40031A5B2 /* AppDelegate.swift */,
+				FA1663F52338D7150066D87A /* TableTableViewController.swift */,
 				FAA09BBC23381FF40031A5B2 /* ViewController.swift */,
 				FAA09BBE23381FF40031A5B2 /* Main.storyboard */,
 				FAA09BC123381FF50031A5B2 /* Assets.xcassets */,
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA09BBD23381FF40031A5B2 /* ViewController.swift in Sources */,
+				FA1663F62338D7150066D87A /* TableTableViewController.swift in Sources */,
 				FAA09BBB23381FF40031A5B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,7 +13,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
     var progressView: UIProgressView!
-    var websites = ["apple.com", "hackingwithswift.com"]
+    var websites = [String]()
+    var selectedIndex: Int?
 
     override func loadView() {
         webView = WKWebView()
@@ -24,7 +25,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let url = URL(string: "https://" + websites[0])!
+        guard let index = selectedIndex else { return }
+        let url = URL(string: "https://" + websites[index])!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
         
