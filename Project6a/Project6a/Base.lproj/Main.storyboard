@@ -13,13 +13,16 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project6a" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXw-nA-kLY">
                                 <rect key="frame" x="107" y="230" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wXw-nA-kLY" secondAttribute="height" multiplier="2:1" id="3sO-UP-O6W"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yxX-hC-RyO"/>
@@ -27,6 +30,9 @@
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwp-Ee-gB4">
                                 <rect key="frame" x="107" y="360" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Iwp-Ee-gB4" secondAttribute="height" multiplier="2:1" id="H7h-si-YPa"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vFq-er-Tja"/>
@@ -34,6 +40,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gu-nY-IPW">
                                 <rect key="frame" x="107" y="100" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7Gu-nY-IPW" secondAttribute="height" multiplier="2:1" id="oTT-Xx-K92"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sY4-Gb-qXN"/>
@@ -43,6 +52,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Iwp-Ee-gB4" firstAttribute="centerX" secondItem="wXw-nA-kLY" secondAttribute="centerX" id="67O-dg-aAr"/>
+                            <constraint firstItem="Iwp-Ee-gB4" firstAttribute="height" secondItem="wXw-nA-kLY" secondAttribute="height" id="87g-Ri-2R9"/>
+                            <constraint firstItem="wXw-nA-kLY" firstAttribute="height" secondItem="7Gu-nY-IPW" secondAttribute="height" id="NBo-b1-k9T"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Iwp-Ee-gB4" secondAttribute="bottom" constant="20" id="Vxd-W2-ubA"/>
                             <constraint firstItem="wXw-nA-kLY" firstAttribute="top" secondItem="7Gu-nY-IPW" secondAttribute="bottom" constant="30" id="gir-XP-JGZ"/>
                             <constraint firstItem="7Gu-nY-IPW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="lZV-Ym-MSA"/>
                             <constraint firstItem="Iwp-Ee-gB4" firstAttribute="top" secondItem="wXw-nA-kLY" secondAttribute="bottom" constant="30" id="mJW-JL-jat"/>
