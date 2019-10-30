@@ -13,6 +13,9 @@
 		FAB381C22368FFC000313E9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB381C02368FFC000313E9E /* Main.storyboard */; };
 		FAB381C42368FFC100313E9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB381C32368FFC100313E9E /* Assets.xcassets */; };
 		FAB381C72368FFC100313E9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB381C52368FFC100313E9E /* LaunchScreen.storyboard */; };
+		FAB381CF236905E500313E9E /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB381CE236905E500313E9E /* Petition.swift */; };
+		FAB381D1236906C500313E9E /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB381D0236906C500313E9E /* Petitions.swift */; };
+		FAB381D323690CC400313E9E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB381D223690CC400313E9E /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		FAB381C32368FFC100313E9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAB381C62368FFC100313E9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAB381C82368FFC100313E9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAB381CE236905E500313E9E /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
+		FAB381D0236906C500313E9E /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petitions.swift; sourceTree = "<group>"; };
+		FAB381D223690CC400313E9E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				FAB381BA2368FFC000313E9E /* AppDelegate.swift */,
 				FAB381BC2368FFC000313E9E /* SceneDelegate.swift */,
 				FAB381BE2368FFC000313E9E /* ViewController.swift */,
+				FAB381D223690CC400313E9E /* DetailViewController.swift */,
+				FAB381CE236905E500313E9E /* Petition.swift */,
+				FAB381D0236906C500313E9E /* Petitions.swift */,
 				FAB381C02368FFC000313E9E /* Main.storyboard */,
 				FAB381C32368FFC100313E9E /* Assets.xcassets */,
 				FAB381C52368FFC100313E9E /* LaunchScreen.storyboard */,
@@ -139,8 +148,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB381BF2368FFC000313E9E /* ViewController.swift in Sources */,
+				FAB381CF236905E500313E9E /* Petition.swift in Sources */,
 				FAB381BB2368FFC000313E9E /* AppDelegate.swift in Sources */,
+				FAB381D323690CC400313E9E /* DetailViewController.swift in Sources */,
 				FAB381BD2368FFC000313E9E /* SceneDelegate.swift in Sources */,
+				FAB381D1236906C500313E9E /* Petitions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
