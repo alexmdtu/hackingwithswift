@@ -74,6 +74,8 @@ class ViewController: UIViewController {
         let buttonsView = UIView()
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonsView)
+        buttonsView.layer.borderWidth = 1
+        buttonsView.layer.borderColor = UIColor.lightGray.cgColor
         
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
