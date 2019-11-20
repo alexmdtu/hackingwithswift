@@ -226,6 +226,8 @@ class ViewController: UIViewController {
             let ac = UIAlertController(title: "Wrong answer!", message: "Try another answer.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
             present(ac, animated: true)
+            
+            score -= 1
         }
     }
 
