@@ -206,6 +206,7 @@ class ViewController: UIViewController {
     @objc func submitTapped(_ sender: UIButton) {
         guard let answerText = currentAnswer.text else { return }
 
+        // correct answer submitted
         if let solutionPosition = solutions.firstIndex(of: answerText) {
             activatedButtons.removeAll()
 
@@ -221,6 +222,10 @@ class ViewController: UIViewController {
                 ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
                 present(ac, animated: true)
             }
+        } else {
+            let ac = UIAlertController(title: "Wrong answer!", message: "Try another answer.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
+            present(ac, animated: true)
         }
     }
 
