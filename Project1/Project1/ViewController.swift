@@ -21,16 +21,18 @@ class ViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         
-        let fm = FileManager.default
-        let path = Bundle.main.resourcePath!
-        let items = try! fm.contentsOfDirectory(atPath: path)
-        
-        for item in items {
-            if item.hasPrefix("nssl") {
-                pictures.append(item)
+        DispatchQueue.global().async {
+            let fm = FileManager.default
+            let path = Bundle.main.resourcePath!
+            let items = try! fm.contentsOfDirectory(atPath: path)
+            
+            for item in items {
+                if item.hasPrefix("nssl") {
+                    self.pictures.append(item)
+                }
             }
+            self.pictures.sort()
         }
-        pictures.sort()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
