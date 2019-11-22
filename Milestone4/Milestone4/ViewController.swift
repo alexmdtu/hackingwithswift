@@ -9,30 +9,31 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var cluesLabel: UILabel!
     var currentAnswer: UITextField!
-    var scoreLabel: UILabel!
     var letterButtons = [UIButton]()
     
     var activatedButtons = [UIButton]()
-    var solutions = [String]()
-    
-    var score = 0 {
-        didSet {
-            scoreLabel.text = "Score: \(score)"
-        }
-    }
-    var level = 1
+    var questions = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // setup letter buttons, take similar approach like in swifty words game
+        // load questions
+        if let questionsURL = Bundle.main.url(forResource: "questions", withExtension: "txt") {
+            if let questionsContent = try? String(contentsOf: questionsURL) {
+                questions = questionsContent.components(separatedBy: "\n")
+                questions.shuffle()
+            }
+        }
+        
+        // setup clue as underscores
         view = UIView()
         view.backgroundColor = .white
         
-        // load level
+        // setup letter buttons, take similar approach like in swifty words game
+        
+        // create AC for wrong answers and correct answer, loading next question
     }
 
 
