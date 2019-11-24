@@ -12,6 +12,7 @@ class ViewController: UITableViewController {
     
     var allWords = [String]()
     var usedWords = [String]()
+    var currentWord = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,56 @@ class ViewController: UITableViewController {
             allWords = ["silkworm"]
         }
         
-        startGame()
+        let defaults = UserDefaults.standard
+
+        if let savedPeople = defaults.object(forKey: "currentWord") as? Data {
+            let jsonDecoder = JSONDecoder()
+
+            do {
+                currentWord = try jsonDecoder.decode(String.self, from: savedPeople)
+            } catch {
+                print("Failed to load current word")
+            }
+        }
+        
+        if let savedPeople = defaults.object(forKey: "usedWords") as? Data {
+            let jsonDecoder = JSONDecoder()
+
+            do {
+                usedWords = try jsonDecoder.decode([String].self, from: savedPeople)
+            } catch {
+                print("Failed to load usedWords")
+            }
+        }
+        
+        if currentWord.isEmpty {
+            startGame()
+        } else {
+            title = currentWord
+        }
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(title) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "currentWord")
+        } else {
+            print("Failed to save current word.")
+        }
+        
+        if let savedData = try? jsonEncoder.encode(usedWords) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "usedWords")
+        } else {
+            print("Failed to save used words.")
+        }
     }
     
     @objc func startGame() {
         title = allWords.randomElement()
         usedWords.removeAll(keepingCapacity: true)
+        save()
         tableView.reloadData()
     }
     
@@ -62,6 +107,7 @@ class ViewController: UITableViewController {
                     
                     let indexPath = IndexPath(row: 0, section: 0)
                     tableView.insertRows(at: [indexPath], with: .automatic)
+                    save()
                     
                     return
                 } else {
