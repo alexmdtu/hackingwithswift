@@ -13,10 +13,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let ballNames = ["ballBlue", "ballYellow", "ballPurple", "ballGrey", "ballRed", "ballCyan", "ballGreen"]
     
     var scoreLabel: SKLabelNode!
-
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
+        }
+    }
+    
+    var livesLabel: SKLabelNode!
+    var lives = 5 {
+        didSet {
+            livesLabel.text = "Lives: \(lives)"
         }
     }
     
@@ -58,6 +64,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.horizontalAlignmentMode = .right
         scoreLabel.position = CGPoint(x: 980, y: 700)
         addChild(scoreLabel)
+        
+        livesLabel = SKLabelNode(fontNamed: "Chalkduster")
+        livesLabel.text = "Lives: 5"
+        livesLabel.horizontalAlignmentMode = .right
+        livesLabel.position = CGPoint(x: 790, y: 700)
+        addChild(livesLabel)
         
         editLabel = SKLabelNode(fontNamed: "Chalkduster")
         editLabel.text = "Edit"
@@ -125,7 +137,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
                     ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
                     ball.physicsBody?.restitution = 0.4
-                    ball.position = location
+                    ball.position = CGPoint(x: location.x, y: 700)
                     ball.name = "ball"
 
                     addChild(ball)
@@ -138,9 +150,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if object.name == "good" {
             destroy(ball: ball)
             score += 1
+            lives += 1
         } else if object.name == "bad" {
             destroy(ball: ball)
             score -= 1
+            lives -= 1
         }
     }
 
