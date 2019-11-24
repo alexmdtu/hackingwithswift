@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UITableViewController {
     
     var pictures = [String]()
+    var counters = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,21 @@ class ViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         
-        performSelector(inBackground: #selector(loadPictures), with: nil)
+        loadPictures()
+        
+        let defaults = UserDefaults.standard
+        
+        if let savedCounters = defaults.object(forKey: "counters") as? Data {
+            let jsonDecoder = JSONDecoder()
+
+            do {
+                counters = try jsonDecoder.decode([Int].self, from: savedCounters)
+            } catch {
+                print("Failed to load counters")
+            }
+        }
+        
+        print(counters)
     }
     
     @objc func loadPictures() {
@@ -36,7 +51,11 @@ class ViewController: UITableViewController {
         }
         self.pictures.sort()
         
-        tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+        if counters.isEmpty {
+            counters = Array(repeating: 0, count: pictures.count)
+        }
+        
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

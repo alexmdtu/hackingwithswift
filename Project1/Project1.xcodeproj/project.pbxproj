@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA67BA86233385BC0069DE01 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67BA85233385BC0069DE01 /* DetailViewController.swift */; };
+		FABA8DEC238ADFD100834591 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA8DEB238ADFD100834591 /* Picture.swift */; };
 		FAE0F9662332C67700DFE845 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE0F9652332C67700DFE845 /* AppDelegate.swift */; };
 		FAE0F9682332C67700DFE845 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE0F9672332C67700DFE845 /* ViewController.swift */; };
 		FAE0F96B2332C67700DFE845 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE0F9692332C67700DFE845 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		FA67BA85233385BC0069DE01 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FABA8DEB238ADFD100834591 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		FAE0F9622332C67700DFE845 /* Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE0F9652332C67700DFE845 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAE0F9672332C67700DFE845 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				FAE0F9652332C67700DFE845 /* AppDelegate.swift */,
 				FAE0F9672332C67700DFE845 /* ViewController.swift */,
+				FABA8DEB238ADFD100834591 /* Picture.swift */,
 				FA67BA85233385BC0069DE01 /* DetailViewController.swift */,
 				FAE0F9692332C67700DFE845 /* Main.storyboard */,
 				FAE0F96C2332C67900DFE845 /* Assets.xcassets */,
@@ -186,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FABA8DEC238ADFD100834591 /* Picture.swift in Sources */,
 				FA67BA86233385BC0069DE01 /* DetailViewController.swift in Sources */,
 				FAE0F9682332C67700DFE845 /* ViewController.swift in Sources */,
 				FAE0F9662332C67700DFE845 /* AppDelegate.swift in Sources */,
