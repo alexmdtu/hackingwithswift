@@ -17,6 +17,18 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(takePicture))
+        
+        let defaults = UserDefaults.standard
+        
+        if let savedPictures = defaults.object(forKey: "pictures") as? Data {
+            let jsonDecoder = JSONDecoder()
+
+            do {
+                pictures = try jsonDecoder.decode([Picture].self, from: savedPictures)
+            } catch {
+                print("Failed to load pictures")
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,6 +40,14 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         cell.textLabel?.text = pictures[indexPath.row].caption
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            vc.pic = pictures[indexPath.row]
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
