@@ -130,6 +130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
                     box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
                     box.physicsBody?.isDynamic = false
+                    box.name = "box"
 
                     addChild(box)
                 } else {
@@ -155,6 +156,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             destroy(ball: ball)
             score -= 1
             lives -= 1
+        } else if object.name == "box" {
+            destroy(ball: object)
         }
     }
 
