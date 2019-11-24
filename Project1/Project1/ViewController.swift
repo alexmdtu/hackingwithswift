@@ -39,7 +39,7 @@ class ViewController: UITableViewController {
         print(counters)
     }
     
-    @objc func loadPictures() {
+    func loadPictures() {
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
@@ -58,6 +58,16 @@ class ViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(counters) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "counters")
+        } else {
+            print("Failed to save counters.")
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pictures.count
     }
@@ -73,6 +83,10 @@ class ViewController: UITableViewController {
             vc.selectedImage = pictures[indexPath.row]
             vc.selectedImageIndex = indexPath.row + 1
             vc.pictureCount = pictures.count
+            
+            counters[indexPath.row] += 1
+            save()
+            
             navigationController?.pushViewController(vc, animated: true)
         }
     }
