@@ -13,6 +13,7 @@
 		FAD64068238B28B800D8331D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD64066238B28B800D8331D /* Main.storyboard */; };
 		FAD6406A238B28B900D8331D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD64069238B28B900D8331D /* Assets.xcassets */; };
 		FAD6406D238B28B900D8331D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD6406B238B28B900D8331D /* LaunchScreen.storyboard */; };
+		FAD64075238B2CE900D8331D /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD64074238B2CE900D8331D /* Picture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FAD64069238B28B900D8331D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAD6406C238B28B900D8331D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAD6406E238B28B900D8331D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAD64074238B2CE900D8331D /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				FAD64060238B28B800D8331D /* AppDelegate.swift */,
 				FAD64062238B28B800D8331D /* SceneDelegate.swift */,
 				FAD64064238B28B800D8331D /* ViewController.swift */,
+				FAD64074238B2CE900D8331D /* Picture.swift */,
 				FAD64066238B28B800D8331D /* Main.storyboard */,
 				FAD64069238B28B900D8331D /* Assets.xcassets */,
 				FAD6406B238B28B900D8331D /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD64075238B2CE900D8331D /* Picture.swift in Sources */,
 				FAD64065238B28B800D8331D /* ViewController.swift in Sources */,
 				FAD64061238B28B800D8331D /* AppDelegate.swift in Sources */,
 				FAD64063238B28B800D8331D /* SceneDelegate.swift in Sources */,
