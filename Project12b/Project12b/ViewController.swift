@@ -17,6 +17,17 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         // Do any additional setup after loading the view.
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
 
+        let defaults = UserDefaults.standard
+
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            let jsonDecoder = JSONDecoder()
+
+            do {
+                people = try jsonDecoder.decode([Person].self, from: savedPeople)
+            } catch {
+                print("Failed to load people")
+            }
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -32,8 +43,19 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         let person = Person(name: "Unknown", image: imageName)
         people.append(person)
         collectionView.reloadData()
+        save()
         
         dismiss(animated: true)
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(people) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "people")
+        } else {
+            print("Failed to save people.")
+        }
     }
     
     func getDocumentsDirectory() -> URL {
@@ -76,6 +98,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             person.name = newName
             
             self?.collectionView.reloadData()
+            self?.save()
         }))
         
         let initialAc = UIAlertController(title: "Remove or Rename?", message: "What do you want to do?", preferredStyle: .alert)
@@ -86,6 +109,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         initialAc.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: { _ in
             self.people.remove(at: indexPath.item)
             collectionView.reloadData()
+            self.save()
         }))
         
         present(initialAc, animated: true)
