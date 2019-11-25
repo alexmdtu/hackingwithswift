@@ -12,6 +12,7 @@ import CoreImage
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var intensity: UISlider!
+    @IBOutlet var radius: UISlider!
     
     var currentImage: UIImage!
     var context: CIContext!
@@ -42,11 +43,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func applyProcessing() {
         let inputKeys = currentFilter.inputKeys
+        
+        intensity.isEnabled = false
+        radius.isEnabled = false
 
-        if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey) }
-        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey) }
-        if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey) }
-        if inputKeys.contains(kCIInputCenterKey) { currentFilter.setValue(CIVector(x: currentImage.size.width / 2, y: currentImage.size.height / 2), forKey: kCIInputCenterKey) }
+        if inputKeys.contains(kCIInputIntensityKey) {
+            currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
+            intensity.isEnabled = true
+        }
+        if inputKeys.contains(kCIInputRadiusKey) {
+            currentFilter.setValue(radius.value * 200, forKey: kCIInputRadiusKey)
+            radius.isEnabled = true
+        }
+        if inputKeys.contains(kCIInputScaleKey) {
+            currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey)
+            intensity.isEnabled = true
+        }
+        if inputKeys.contains(kCIInputCenterKey) {
+            currentFilter.setValue(CIVector(x: currentImage.size.width / 2, y: currentImage.size.height / 2), forKey: kCIInputCenterKey)
+            intensity.isEnabled = true
+        }
 
         if let cgimg = context.createCGImage(currentFilter.outputImage!, from: currentFilter.outputImage!.extent) {
             let processedImage = UIImage(cgImage: cgimg)
@@ -116,6 +132,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     @IBAction func intensityChanged(_ sender: UISlider) {
+        applyProcessing()
+    }
+    
+    @IBAction func radiusChanged(_ sender: UISlider) {
         applyProcessing()
     }
 }
