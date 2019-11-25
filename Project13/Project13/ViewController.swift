@@ -67,6 +67,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         // safely read the alert action's title
         guard let actionTitle = action.title else { return }
+        
+        let formattedTitle = actionTitle.suffix(actionTitle.count - 2)
+        title = String(formattedTitle).titlecased()
 
         currentFilter = CIFilter(name: actionTitle)
 
@@ -117,3 +120,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 }
 
+extension String {
+    func titlecased() -> String {
+        return self.replacingOccurrences(of: "([A-Z])", with: " $1", options: .regularExpression, range: self.range(of: self))
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .capitalized
+    }
+}
