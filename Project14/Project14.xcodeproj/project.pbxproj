@@ -14,6 +14,14 @@
 		FA490406238C8F9200B01507 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA490404238C8F9200B01507 /* Main.storyboard */; };
 		FA490408238C8F9400B01507 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA490407238C8F9400B01507 /* Assets.xcassets */; };
 		FA49040B238C8F9400B01507 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA490409238C8F9400B01507 /* LaunchScreen.storyboard */; };
+		FA49041B238C908100B01507 /* whackBad.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA490413238C908100B01507 /* whackBad.caf */; };
+		FA49041C238C908100B01507 /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA490414238C908100B01507 /* whack.caf */; };
+		FA49041D238C908100B01507 /* gameOver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA490415238C908100B01507 /* gameOver@2x.png */; };
+		FA49041E238C908100B01507 /* penguinEvil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA490416238C908100B01507 /* penguinEvil@2x.png */; };
+		FA49041F238C908100B01507 /* whackHole@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA490417238C908100B01507 /* whackHole@2x.png */; };
+		FA490420238C908100B01507 /* penguinGood@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA490418238C908100B01507 /* penguinGood@2x.png */; };
+		FA490421238C908100B01507 /* whackMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA490419238C908100B01507 /* whackMask@2x.png */; };
+		FA490422238C908100B01507 /* whackBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA49041A238C908100B01507 /* whackBackground@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,14 @@
 		FA490407238C8F9400B01507 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA49040A238C8F9400B01507 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA49040C238C8F9400B01507 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA490413238C908100B01507 /* whackBad.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whackBad.caf; sourceTree = "<group>"; };
+		FA490414238C908100B01507 /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
+		FA490415238C908100B01507 /* gameOver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameOver@2x.png"; sourceTree = "<group>"; };
+		FA490416238C908100B01507 /* penguinEvil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penguinEvil@2x.png"; sourceTree = "<group>"; };
+		FA490417238C908100B01507 /* whackHole@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackHole@2x.png"; sourceTree = "<group>"; };
+		FA490418238C908100B01507 /* penguinGood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penguinGood@2x.png"; sourceTree = "<group>"; };
+		FA490419238C908100B01507 /* whackMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackMask@2x.png"; sourceTree = "<group>"; };
+		FA49041A238C908100B01507 /* whackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackBackground@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +82,25 @@
 				FA490407238C8F9400B01507 /* Assets.xcassets */,
 				FA490409238C8F9400B01507 /* LaunchScreen.storyboard */,
 				FA49040C238C8F9400B01507 /* Info.plist */,
+				FA490412238C908100B01507 /* Content */,
 			);
 			path = Project14;
+			sourceTree = "<group>";
+		};
+		FA490412238C908100B01507 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				FA490413238C908100B01507 /* whackBad.caf */,
+				FA490414238C908100B01507 /* whack.caf */,
+				FA490415238C908100B01507 /* gameOver@2x.png */,
+				FA490416238C908100B01507 /* penguinEvil@2x.png */,
+				FA490417238C908100B01507 /* whackHole@2x.png */,
+				FA490418238C908100B01507 /* penguinGood@2x.png */,
+				FA490419238C908100B01507 /* whackMask@2x.png */,
+				FA49041A238C908100B01507 /* whackBackground@2x.png */,
+			);
+			name = Content;
+			path = "../../../HackingWithSwift/Classic/project14-files/Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,10 +161,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA490421238C908100B01507 /* whackMask@2x.png in Resources */,
+				FA49041B238C908100B01507 /* whackBad.caf in Resources */,
 				FA490406238C8F9200B01507 /* Main.storyboard in Resources */,
 				FA4903FD238C8F9100B01507 /* GameScene.sks in Resources */,
 				FA490408238C8F9400B01507 /* Assets.xcassets in Resources */,
+				FA490422238C908100B01507 /* whackBackground@2x.png in Resources */,
+				FA49041F238C908100B01507 /* whackHole@2x.png in Resources */,
 				FA49040B238C8F9400B01507 /* LaunchScreen.storyboard in Resources */,
+				FA49041E238C908100B01507 /* penguinEvil@2x.png in Resources */,
+				FA49041D238C908100B01507 /* gameOver@2x.png in Resources */,
+				FA490420238C908100B01507 /* penguinGood@2x.png in Resources */,
+				FA49041C238C908100B01507 /* whack.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
