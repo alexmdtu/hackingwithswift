@@ -62,6 +62,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
+        // animate button taps
+        UIButton.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: [], animations: {
+            sender.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+            sender.transform = .identity
+        }, completion: nil)
+        
+        // handle correct and incorrect answers
         var title: String
         var message: String
         
