@@ -49,10 +49,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         var location = touch.location(in: self)
 
@@ -63,6 +63,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         player.position = location
+    }
+    
+    // lifting finger means death
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        playerDies()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -77,7 +82,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func didBegin(_ contact: SKPhysicsContact) {
+    // to implement for challenge
+    func spawnEnemies(timeInterval: Double) {
+        gameTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+    }
+    
+    func playerDies() {
         let explosion = SKEmitterNode(fileNamed: "explosion")!
         explosion.position = player.position
         addChild(explosion)
@@ -85,6 +95,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.removeFromParent()
 
         isGameOver = true
+        gameTimer?.invalidate()
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        playerDies()
     }
     
     @objc func createEnemy() {
