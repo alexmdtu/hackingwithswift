@@ -23,6 +23,7 @@
 		FA490421238C908100B01507 /* whackMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA490419238C908100B01507 /* whackMask@2x.png */; };
 		FA490422238C908100B01507 /* whackBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA49041A238C908100B01507 /* whackBackground@2x.png */; };
 		FAD80DFB238E7FB700616DEC /* WhackSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD80DFA238E7FB700616DEC /* WhackSlot.swift */; };
+		FAD80DFD238E965900616DEC /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = FAD80DFC238E965900616DEC /* gameOver.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		FA490419238C908100B01507 /* whackMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackMask@2x.png"; sourceTree = "<group>"; };
 		FA49041A238C908100B01507 /* whackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackBackground@2x.png"; sourceTree = "<group>"; };
 		FAD80DFA238E7FB700616DEC /* WhackSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
+		FAD80DFC238E965900616DEC /* gameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameOver.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		FA490412238C908100B01507 /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				FAD80DFC238E965900616DEC /* gameOver.wav */,
 				FA490413238C908100B01507 /* whackBad.caf */,
 				FA490414238C908100B01507 /* whack.caf */,
 				FA490415238C908100B01507 /* gameOver@2x.png */,
@@ -166,6 +169,7 @@
 			files = (
 				FA490421238C908100B01507 /* whackMask@2x.png in Resources */,
 				FA49041B238C908100B01507 /* whackBad.caf in Resources */,
+				FAD80DFD238E965900616DEC /* gameOver.wav in Resources */,
 				FA490406238C8F9200B01507 /* Main.storyboard in Resources */,
 				FA4903FD238C8F9100B01507 /* GameScene.sks in Resources */,
 				FA490408238C8F9400B01507 /* Assets.xcassets in Resources */,
