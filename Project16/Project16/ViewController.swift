@@ -8,8 +8,9 @@
 
 import UIKit
 import MapKit
+import WebKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, WKNavigationDelegate {
     @IBOutlet var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -64,11 +65,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let capital = view.annotation as? Capital else { return }
         let placeName = capital.title
-        let placeInfo = capital.info
-
-        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+        
+        let vc = DetailViewController()
+        vc.cityName = placeName
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
