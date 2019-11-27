@@ -39,6 +39,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
 
         applyProcessing()
+        imageView.alpha = 0
+        
+        UIImageView.animate(withDuration: 2, delay: 0.5, options: [], animations: {
+            self.imageView.alpha = 1
+        }, completion: nil)
     }
     
     func applyProcessing() {
