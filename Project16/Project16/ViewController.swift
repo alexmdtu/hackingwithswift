@@ -22,6 +22,23 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let washington = Capital(title: "Washington DC", coordinate: CLLocationCoordinate2D(latitude: 38.895111, longitude: -77.036667), info: "Named after George himself.")
         
         mapView.addAnnotations([london, oslo, paris, rome, washington])
+        
+        // prompt for map type
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(changeMapType))
+    }
+    
+    @objc func changeMapType() {
+        let ac = UIAlertController(title: "Choose a map type", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Standard", style: .default, handler: { _ in
+            self.mapView.mapType = .standard
+        }))
+        ac.addAction(UIAlertAction(title: "Satellite", style: .default, handler: { _ in
+            self.mapView.mapType = .satellite
+        }))
+        ac.addAction(UIAlertAction(title: "Hybrid", style: .default, handler: { _ in
+            self.mapView.mapType = .hybrid
+        }))
+        present(ac, animated: true)
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
