@@ -13,6 +13,7 @@
 		FA7156F0238E9F5500D02EC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7156EE238E9F5500D02EC4 /* Main.storyboard */; };
 		FA7156F2238E9F5600D02EC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA7156F1238E9F5600D02EC4 /* Assets.xcassets */; };
 		FA7156F5238E9F5600D02EC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7156F3238E9F5600D02EC4 /* LaunchScreen.storyboard */; };
+		FA7156FE238EA2D700D02EC4 /* penguin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7156FD238EA2D700D02EC4 /* penguin@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FA7156F1238E9F5600D02EC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA7156F4238E9F5600D02EC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA7156F6238E9F5600D02EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA7156FD238EA2D700D02EC4 /* penguin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penguin@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +65,17 @@
 				FA7156F1238E9F5600D02EC4 /* Assets.xcassets */,
 				FA7156F3238E9F5600D02EC4 /* LaunchScreen.storyboard */,
 				FA7156F6238E9F5600D02EC4 /* Info.plist */,
+				FA7156FC238EA2D700D02EC4 /* Content */,
 			);
 			path = Project15;
+			sourceTree = "<group>";
+		};
+		FA7156FC238EA2D700D02EC4 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				FA7156FD238EA2D700D02EC4 /* penguin@2x.png */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7156F5238E9F5600D02EC4 /* LaunchScreen.storyboard in Resources */,
+				FA7156FE238EA2D700D02EC4 /* penguin@2x.png in Resources */,
 				FA7156F2238E9F5600D02EC4 /* Assets.xcassets in Resources */,
 				FA7156F0238E9F5500D02EC4 /* Main.storyboard in Resources */,
 			);
@@ -294,7 +306,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.tu.alexander.Project15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -312,7 +324,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.tu.alexander.Project15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
