@@ -13,6 +13,8 @@
 		FA715713238EB98A00D02EC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA715711238EB98A00D02EC4 /* Main.storyboard */; };
 		FA715715238EB98C00D02EC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA715714238EB98C00D02EC4 /* Assets.xcassets */; };
 		FA715718238EB98C00D02EC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA715716238EB98C00D02EC4 /* LaunchScreen.storyboard */; };
+		FA715720238EB9E500D02EC4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71571F238EB9E500D02EC4 /* DetailViewController.swift */; };
+		FA715722238EBC1500D02EC4 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA715721238EBC1500D02EC4 /* Country.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		FA715714238EB98C00D02EC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA715717238EB98C00D02EC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA715719238EB98C00D02EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA71571F238EB9E500D02EC4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FA715721238EBC1500D02EC4 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				FA71570B238EB98A00D02EC4 /* AppDelegate.swift */,
 				FA71570D238EB98A00D02EC4 /* SceneDelegate.swift */,
 				FA71570F238EB98A00D02EC4 /* ViewController.swift */,
+				FA71571F238EB9E500D02EC4 /* DetailViewController.swift */,
+				FA715721238EBC1500D02EC4 /* Country.swift */,
 				FA715711238EB98A00D02EC4 /* Main.storyboard */,
 				FA715714238EB98C00D02EC4 /* Assets.xcassets */,
 				FA715716238EB98C00D02EC4 /* LaunchScreen.storyboard */,
@@ -141,6 +147,8 @@
 				FA715710238EB98A00D02EC4 /* ViewController.swift in Sources */,
 				FA71570C238EB98A00D02EC4 /* AppDelegate.swift in Sources */,
 				FA71570E238EB98A00D02EC4 /* SceneDelegate.swift in Sources */,
+				FA715722238EBC1500D02EC4 /* Country.swift in Sources */,
+				FA715720238EB9E500D02EC4 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
