@@ -24,6 +24,8 @@
 		FA490422238C908100B01507 /* whackBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA49041A238C908100B01507 /* whackBackground@2x.png */; };
 		FAD80DFB238E7FB700616DEC /* WhackSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD80DFA238E7FB700616DEC /* WhackSlot.swift */; };
 		FAD80DFD238E965900616DEC /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = FAD80DFC238E965900616DEC /* gameOver.wav */; };
+		FAD80E00238E983600616DEC /* smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD80DFE238E983600616DEC /* smoke.sks */; };
+		FAD80E01238E983600616DEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD80DFF238E983600616DEC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		FA49041A238C908100B01507 /* whackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackBackground@2x.png"; sourceTree = "<group>"; };
 		FAD80DFA238E7FB700616DEC /* WhackSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
 		FAD80DFC238E965900616DEC /* gameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameOver.wav; sourceTree = "<group>"; };
+		FAD80DFE238E983600616DEC /* smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = smoke.sks; sourceTree = "<group>"; };
+		FAD80DFF238E983600616DEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				FA490418238C908100B01507 /* penguinGood@2x.png */,
 				FA490419238C908100B01507 /* whackMask@2x.png */,
 				FA49041A238C908100B01507 /* whackBackground@2x.png */,
+				FAD80DFE238E983600616DEC /* smoke.sks */,
+				FAD80DFF238E983600616DEC /* Assets.xcassets */,
 			);
 			name = Content;
 			path = "../../../HackingWithSwift/Classic/project14-files/Content";
@@ -171,6 +177,7 @@
 				FA49041B238C908100B01507 /* whackBad.caf in Resources */,
 				FAD80DFD238E965900616DEC /* gameOver.wav in Resources */,
 				FA490406238C8F9200B01507 /* Main.storyboard in Resources */,
+				FAD80E01238E983600616DEC /* Assets.xcassets in Resources */,
 				FA4903FD238C8F9100B01507 /* GameScene.sks in Resources */,
 				FA490408238C8F9400B01507 /* Assets.xcassets in Resources */,
 				FA490422238C908100B01507 /* whackBackground@2x.png in Resources */,
@@ -180,6 +187,7 @@
 				FA49041D238C908100B01507 /* gameOver@2x.png in Resources */,
 				FA490420238C908100B01507 /* penguinGood@2x.png in Resources */,
 				FA49041C238C908100B01507 /* whack.caf in Resources */,
+				FAD80E00238E983600616DEC /* smoke.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
