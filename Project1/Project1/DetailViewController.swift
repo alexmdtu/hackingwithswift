@@ -20,6 +20,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        assert(selectedImage != nil, "Selected image is empty!")
         if let index = selectedImageIndex, let pictureCount = pictureCount {
             title = "Picture \(index) of \(pictureCount)"
         }
