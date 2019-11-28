@@ -24,6 +24,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isGameOver = false
     var gameTimer: Timer?
     
+    var enemyCounter = 0
+    var spawnDelay = 1.0
+    
     override func didMove(to view: SKView) {
         backgroundColor = .black
 
@@ -49,7 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        spawnEnemies(timeInterval: spawnDelay)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -82,8 +85,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    // to implement for challenge
     func spawnEnemies(timeInterval: Double) {
+        gameTimer?.invalidate()
         gameTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
     }
     
@@ -105,6 +108,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func createEnemy() {
         guard let enemy = possibleEnemies.randomElement() else { return }
 
+        enemyCounter += 1
+        if enemyCounter >= 20 {
+            if spawnDelay > 0.1 {
+                spawnDelay -= 0.1
+            }
+            spawnEnemies(timeInterval: spawnDelay)
+            enemyCounter = 1
+        }
+        
         let sprite = SKSpriteNode(imageNamed: enemy)
         sprite.position = CGPoint(x: 1200, y: Int.random(in: 50...736))
         addChild(sprite)
