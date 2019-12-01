@@ -19,7 +19,10 @@ class ActionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        
+        navigationItem.rightBarButtonItems = [doneButton, saveButton]
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(showFavorites))
     
         if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
@@ -29,18 +32,29 @@ class ActionViewController: UIViewController {
                     guard let javaScriptValues = itemDictionary[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else { return }
                     self?.pageTitle = javaScriptValues["title"] as? String ?? ""
                     self?.pageURL = javaScriptValues["URL"] as? String ?? ""
-
+                   
                     DispatchQueue.main.async {
                         self?.title = self?.pageTitle
+                        
+                        // load saved script text
+                        let defaults = UserDefaults.standard
+                        self?.script.text = defaults.string(forKey: self?.pageURL ?? "")
                     }
                 }
             }
         }
         
+        
+        
         // handle keyboard change
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc func save() {
+        let defaults = UserDefaults.standard
+        defaults.set(script.text, forKey: pageURL)
     }
     
     @objc func showFavorites() {
@@ -72,13 +86,12 @@ class ActionViewController: UIViewController {
 
     @IBAction func done() {
         // Return any edited content to the host app.
-        // This template doesn't do anything, so we just echo the passed in items.
         let item = NSExtensionItem()
         let argument: NSDictionary = ["customJavaScript": script.text ?? ""]
         let webDictionary: NSDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: argument]
         let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
         item.attachments = [customJavaScript]
-
+        
         extensionContext?.completeRequest(returningItems: [item])
     }
 
