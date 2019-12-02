@@ -24,6 +24,8 @@ class GameScene: SKScene {
         }
     }
     
+    var launchesLeft = 5
+    
     func explode(firework: SKNode) {
         if let emitter = SKEmitterNode(fileNamed: "explode") {
             emitter.position = firework.position
@@ -75,7 +77,7 @@ class GameScene: SKScene {
         scoreLabel.position = CGPoint(x: 750, y: 700)
         scoreLabel.text = "Score: 0"
         scoreLabel.horizontalAlignmentMode = .left
-        scoreLabel.fontSize = 48
+        scoreLabel.fontSize = 28
         addChild(scoreLabel)
         
         gameTimer = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(launchFireworks), userInfo: nil, repeats: true)
@@ -162,6 +164,13 @@ class GameScene: SKScene {
     }
     
     @objc func launchFireworks() {
+        launchesLeft -= 1
+        if launchesLeft <= 0 {
+            // game over
+            gameTimer?.invalidate()
+            return
+        }
+        
         let movementAmount: CGFloat = 1800
 
         switch Int.random(in: 0...3) {
