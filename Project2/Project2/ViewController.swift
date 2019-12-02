@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     @IBOutlet var button1: UIButton!
     @IBOutlet var button2: UIButton!
     @IBOutlet var button3: UIButton!
@@ -23,6 +23,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // notification setup
+        registerLocal()
+        scheduleLocal()
+        
+        // regular app behavior
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showScore))
         
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
@@ -116,6 +121,77 @@ class ViewController: UIViewController {
         } else {
             print("Failed to save high score.")
         }
+    }
+    
+    // notification related functions
+    @objc func registerLocal() {
+        let center = UNUserNotificationCenter.current()
+
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Yay!")
+            } else {
+                print("D'oh")
+            }
+        }
+    }
+    
+    @objc func scheduleLocal() {
+        registerCategories()
+                
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+
+        let content = UNMutableNotificationContent()
+        content.title = "Play game!"
+        content.body = "Let's play a bit more today!"
+        content.categoryIdentifier = "alarm"
+        content.sound = UNNotificationSound.default
+                
+        // interval trigger for each day
+        let dayInSeconds: TimeInterval = 86400
+        
+        let trigger1 = UNTimeIntervalNotificationTrigger(timeInterval: dayInSeconds, repeats: false)
+        let trigger2 = UNTimeIntervalNotificationTrigger(timeInterval: dayInSeconds*2, repeats: false)
+        let trigger3 = UNTimeIntervalNotificationTrigger(timeInterval: dayInSeconds*3, repeats: false)
+        let trigger4 = UNTimeIntervalNotificationTrigger(timeInterval: dayInSeconds*4, repeats: false)
+
+        let request1 = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger1)
+        let request2 = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger2)
+        let request3 = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger3)
+        let request4 = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger4)
+        
+        center.add(request1)
+        center.add(request2)
+        center.add(request3)
+        center.add(request4)
+        }
+    
+    func registerCategories() {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+
+        let show = UNNotificationAction(identifier: "show", title: "Play some flag games!", options: .foreground)
+        
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
+
+        center.setNotificationCategories([category])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case UNNotificationDefaultActionIdentifier:
+            // the user swiped to unlock
+            print("Default identifier")
+        case "show":
+            // the user tapped our "show more info…" button
+            print("return to game")
+        default:
+            break
+        }
+
+        // you must call the completion handler when you're done
+        completionHandler()
     }
 }
 
