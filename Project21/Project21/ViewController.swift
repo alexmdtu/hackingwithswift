@@ -30,7 +30,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         }
     }
 
-    @objc func scheduleLocal() {
+    @objc func scheduleLocal(_ timeInterval: TimeInterval) {
         registerCategories()
         
         let center = UNUserNotificationCenter.current()
@@ -42,15 +42,22 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         content.userInfo = ["customData": "fizzbuzz"]
         content.sound = UNNotificationSound.default
 
-        var dateComponents = DateComponents()
-        dateComponents.hour = 10
-        dateComponents.minute = 30
-        // calendar trigger
-        //let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//         calendar trigger
+//        var dateComponents = DateComponents()
+//        dateComponents.hour = 10
+//        dateComponents.minute = 30
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
         // interval trigger for testing purposes
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
+        let trigger: UNTimeIntervalNotificationTrigger
+        
+        if timeInterval == 86400 {
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: false)
+        } else {
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        }
+        print("TimeInterval set to: \(trigger.timeInterval) seconds")
+        print("custom timeInterval: \(timeInterval)")
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         center.add(request)
@@ -61,7 +68,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         center.delegate = self
 
         let show = UNNotificationAction(identifier: "show", title: "Tell me more…", options: .foreground)
-        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
+        let reminder = UNNotificationAction(identifier: "reminder", title: "Remind me later", options: .foreground)
+        
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show, reminder], intentIdentifiers: [])
 
         center.setNotificationCategories([category])
     }
@@ -73,27 +82,25 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         if let customData = userInfo["customData"] as? String {
             print("Custom data received: \(customData)")
             
-            var message = ""
-            var title = ""
-            
+            let ac = UIAlertController(title: "", message: "", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
 
             switch response.actionIdentifier {
             case UNNotificationDefaultActionIdentifier:
                 // the user swiped to unlock
                 print("Default identifier")
-                title = "Default identifier"
-                message = "Default delegate action"
-                let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
+                ac.title = "Default identifier"
+                ac.message = "Default delegate action"
                 present(ac, animated: true)
             case "show":
                 // the user tapped our "show more info…" button
                 print("Show more information…")
-                title = "Custom identifier"
-                message = "Makes whatever you want to action"
-                let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
+                ac.title = "Custom identifier"
+                ac.message = "Makes whatever you want to action"
                 present(ac, animated: true)
+            case "reminder":
+                print("Setting reminder in 24h")
+                scheduleLocal(86400)
             default:
                 break
             }
