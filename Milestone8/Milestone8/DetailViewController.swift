@@ -23,12 +23,21 @@ class DetailViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
-        // todo: save note when leaving detailView
         if let noteText = noteText {
             textView.text = noteText
         }
         
+        // todo: add delete button and compose button
+        let composeButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(createNote))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteNote))
+        
+        toolbarItems = [deleteButton, spacer, composeButton]
+        
+        // todo: add share button
+        
         // todo: add keyboard inset handling
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -39,5 +48,13 @@ class DetailViewController: UIViewController {
     @objc func done() {
         // has to have id, otherwise something went terribly wrong
         viewWillDisappear(true)
+    }
+    
+    @objc func createNote() {
+        
+    }
+    
+    @objc func deleteNote() {
+        
     }
 }

@@ -16,9 +16,6 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view.
         title = "Notes"
         
-        // todo: add toolbar instead of bar button items, see https://developer.apple.com/documentation/uikit/uitoolbar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNote))
-        
         // load notes from user defaults
         let defaults = UserDefaults.standard
         if let savedNotes = defaults.object(forKey: "notes") as? Data {
@@ -30,6 +27,17 @@ class ViewController: UITableViewController {
                 print("Failed to load notes")
             }
         }
+        
+        // setup toolbar for buttons
+        let composeButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(createNote))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        // todo: notes count needs to update
+        let notesCounter = UIBarButtonItem(title: "\(notes.count) Notes", style: .plain, target: nil, action: nil)
+        
+        toolbarItems = [spacer, notesCounter, spacer, composeButton]
+        navigationController?.isToolbarHidden = false
+        
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
