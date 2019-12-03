@@ -41,13 +41,13 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        delegate.saveNote(id: noteId!, text: textView.text, index: index ?? 0)
-        self.navigationController?.popViewController(animated: true)
+        
     }
     
     @objc func done() {
         // has to have id, otherwise something went terribly wrong
-        viewWillDisappear(true)
+        delegate.saveNote(id: noteId!, text: textView.text, index: index ?? 0)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func createNote() {
@@ -55,6 +55,9 @@ class DetailViewController: UIViewController {
     }
     
     @objc func deleteNote() {
-        
+//        if let index = index {
+//            delegate.deleteNote(index: index)
+//        }
+//        self.navigationController?.popViewController(animated: true)
     }
 }

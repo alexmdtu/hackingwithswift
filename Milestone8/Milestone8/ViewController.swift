@@ -62,6 +62,19 @@ class ViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            notes.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
+    
     @objc func createNote() {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             // create new id for new note
@@ -85,6 +98,10 @@ class ViewController: UITableViewController {
         save()
         tableView.reloadData()
     }
+    
+//    func deleteNote(index: IndexPath) {
+//        tableView.deleteRows(at: [index], with: .automatic)
+//    }
     
     func save() {
         let jsonEncoder = JSONEncoder()
