@@ -56,6 +56,7 @@ class ViewController: UITableViewController {
             vc.noteText = notes[indexPath.row].text
             vc.noteId = notes[indexPath.row].id
             vc.index = indexPath.row
+            vc.indexPath = indexPath
             vc.delegate = self
             
             navigationController?.pushViewController(vc, animated: true)
@@ -99,9 +100,11 @@ class ViewController: UITableViewController {
         tableView.reloadData()
     }
     
-//    func deleteNote(index: IndexPath) {
-//        tableView.deleteRows(at: [index], with: .automatic)
-//    }
+    func deleteNote(indexPath: IndexPath) {
+        notes.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        save()
+    }
     
     func save() {
         let jsonEncoder = JSONEncoder()

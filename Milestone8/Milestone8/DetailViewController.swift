@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     var noteText: String?
     var noteId: UUID?
     var index: Int?
+    var indexPath: IndexPath?
     
     weak var delegate: ViewController!
 
@@ -55,9 +56,9 @@ class DetailViewController: UIViewController {
     }
     
     @objc func deleteNote() {
-//        if let index = index {
-//            delegate.deleteNote(index: index)
-//        }
-//        self.navigationController?.popViewController(animated: true)
+        if let indexPath = indexPath {
+            delegate.deleteNote(indexPath: indexPath)
+        }
+        self.navigationController?.popViewController(animated: true)
     }
 }
