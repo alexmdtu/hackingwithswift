@@ -40,7 +40,8 @@ class DetailViewController: UIViewController {
         
         toolbarItems = [deleteButton, spacer, composeButton]
         
-        // todo: add share button
+        // add share button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         
         // todo: add keyboard inset handling
         
@@ -67,5 +68,16 @@ class DetailViewController: UIViewController {
             delegate.deleteNote(indexPath: indexPath)
         }
         navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc func shareTapped() {
+        guard let text = textView.text else {
+            print("No text found")
+            return
+        }
+        
+        let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
     }
 }
