@@ -28,7 +28,12 @@ class DetailViewController: UIViewController {
             textView.text = noteText
         }
         
-        // todo: add delete button and compose button
+        // add custom back button
+        navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(done))
+        navigationItem.leftBarButtonItem = backButton
+        
+        // adding tool bar buttons
         let composeButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(createNote))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteNote))
@@ -38,10 +43,6 @@ class DetailViewController: UIViewController {
         // todo: add share button
         
         // todo: add keyboard inset handling
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
         
     }
     
