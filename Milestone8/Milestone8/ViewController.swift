@@ -74,7 +74,18 @@ class ViewController: UITableViewController {
             // create new note
             notes.append(newNote)
         }
+        save()
         tableView.reloadData()
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(notes) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "notes")
+        } else {
+            print("Failed to save notes.")
+        }
     }
 }
 
