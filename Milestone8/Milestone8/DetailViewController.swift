@@ -48,17 +48,23 @@ class DetailViewController: UIViewController {
     @objc func done() {
         // has to have id, otherwise something went terribly wrong
         delegate.saveNote(id: noteId!, text: textView.text, index: index ?? 0)
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func createNote() {
-        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            // create new id for new note
+            vc.noteId = UUID()
+            vc.delegate = delegate
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @objc func deleteNote() {
         if let indexPath = indexPath {
             delegate.deleteNote(indexPath: indexPath)
         }
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
 }
