@@ -14,6 +14,23 @@
 		FA23345A2397081300687C05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2334582397081300687C05 /* Main.storyboard */; };
 		FA23345C2397081500687C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA23345B2397081500687C05 /* Assets.xcassets */; };
 		FA23345F2397081500687C05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA23345D2397081500687C05 /* LaunchScreen.storyboard */; };
+		FA2334782397094000687C05 /* sliceFuse.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA2334672397094000687C05 /* sliceFuse.sks */; };
+		FA2334792397094000687C05 /* sliceLife@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2334682397094000687C05 /* sliceLife@2x.png */; };
+		FA23347A2397094000687C05 /* sliceBomb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2334692397094000687C05 /* sliceBomb@2x.png */; };
+		FA23347B2397094000687C05 /* sliceLifeGone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA23346A2397094000687C05 /* sliceLifeGone@2x.png */; };
+		FA23347C2397094000687C05 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA23346B2397094000687C05 /* spark.png */; };
+		FA23347D2397094000687C05 /* wrong.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA23346C2397094000687C05 /* wrong.caf */; };
+		FA23347E2397094000687C05 /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA23346D2397094000687C05 /* whack.caf */; };
+		FA23347F2397094000687C05 /* launch.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA23346E2397094000687C05 /* launch.caf */; };
+		FA2334802397094000687C05 /* explosion.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA23346F2397094000687C05 /* explosion.caf */; };
+		FA2334812397094000687C05 /* sliceBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2334702397094000687C05 /* sliceBackground@2x.png */; };
+		FA2334822397094000687C05 /* sliceHitEnemy.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA2334712397094000687C05 /* sliceHitEnemy.sks */; };
+		FA2334832397094000687C05 /* sliceBombFuse.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA2334722397094000687C05 /* sliceBombFuse.caf */; };
+		FA2334842397094000687C05 /* sliceHitBomb.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA2334732397094000687C05 /* sliceHitBomb.sks */; };
+		FA2334852397094000687C05 /* penguin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2334742397094000687C05 /* penguin@2x.png */; };
+		FA2334862397094000687C05 /* swoosh3.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA2334752397094000687C05 /* swoosh3.caf */; };
+		FA2334872397094000687C05 /* swoosh2.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA2334762397094000687C05 /* swoosh2.caf */; };
+		FA2334882397094000687C05 /* swoosh1.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA2334772397094000687C05 /* swoosh1.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +43,23 @@
 		FA23345B2397081500687C05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA23345E2397081500687C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA2334602397081500687C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA2334672397094000687C05 /* sliceFuse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sliceFuse.sks; sourceTree = "<group>"; };
+		FA2334682397094000687C05 /* sliceLife@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sliceLife@2x.png"; sourceTree = "<group>"; };
+		FA2334692397094000687C05 /* sliceBomb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sliceBomb@2x.png"; sourceTree = "<group>"; };
+		FA23346A2397094000687C05 /* sliceLifeGone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sliceLifeGone@2x.png"; sourceTree = "<group>"; };
+		FA23346B2397094000687C05 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		FA23346C2397094000687C05 /* wrong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wrong.caf; sourceTree = "<group>"; };
+		FA23346D2397094000687C05 /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
+		FA23346E2397094000687C05 /* launch.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = launch.caf; sourceTree = "<group>"; };
+		FA23346F2397094000687C05 /* explosion.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.caf; sourceTree = "<group>"; };
+		FA2334702397094000687C05 /* sliceBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sliceBackground@2x.png"; sourceTree = "<group>"; };
+		FA2334712397094000687C05 /* sliceHitEnemy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sliceHitEnemy.sks; sourceTree = "<group>"; };
+		FA2334722397094000687C05 /* sliceBombFuse.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sliceBombFuse.caf; sourceTree = "<group>"; };
+		FA2334732397094000687C05 /* sliceHitBomb.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sliceHitBomb.sks; sourceTree = "<group>"; };
+		FA2334742397094000687C05 /* penguin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penguin@2x.png"; sourceTree = "<group>"; };
+		FA2334752397094000687C05 /* swoosh3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = swoosh3.caf; sourceTree = "<group>"; };
+		FA2334762397094000687C05 /* swoosh2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = swoosh2.caf; sourceTree = "<group>"; };
+		FA2334772397094000687C05 /* swoosh1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = swoosh1.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +100,33 @@
 				FA23345B2397081500687C05 /* Assets.xcassets */,
 				FA23345D2397081500687C05 /* LaunchScreen.storyboard */,
 				FA2334602397081500687C05 /* Info.plist */,
+				FA2334662397094000687C05 /* Content */,
 			);
 			path = Project23;
+			sourceTree = "<group>";
+		};
+		FA2334662397094000687C05 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				FA2334672397094000687C05 /* sliceFuse.sks */,
+				FA2334682397094000687C05 /* sliceLife@2x.png */,
+				FA2334692397094000687C05 /* sliceBomb@2x.png */,
+				FA23346A2397094000687C05 /* sliceLifeGone@2x.png */,
+				FA23346B2397094000687C05 /* spark.png */,
+				FA23346C2397094000687C05 /* wrong.caf */,
+				FA23346D2397094000687C05 /* whack.caf */,
+				FA23346E2397094000687C05 /* launch.caf */,
+				FA23346F2397094000687C05 /* explosion.caf */,
+				FA2334702397094000687C05 /* sliceBackground@2x.png */,
+				FA2334712397094000687C05 /* sliceHitEnemy.sks */,
+				FA2334722397094000687C05 /* sliceBombFuse.caf */,
+				FA2334732397094000687C05 /* sliceHitBomb.sks */,
+				FA2334742397094000687C05 /* penguin@2x.png */,
+				FA2334752397094000687C05 /* swoosh3.caf */,
+				FA2334762397094000687C05 /* swoosh2.caf */,
+				FA2334772397094000687C05 /* swoosh1.caf */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,10 +187,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2334872397094000687C05 /* swoosh2.caf in Resources */,
 				FA23345A2397081300687C05 /* Main.storyboard in Resources */,
+				FA2334852397094000687C05 /* penguin@2x.png in Resources */,
+				FA23347F2397094000687C05 /* launch.caf in Resources */,
+				FA2334862397094000687C05 /* swoosh3.caf in Resources */,
+				FA23347C2397094000687C05 /* spark.png in Resources */,
+				FA2334792397094000687C05 /* sliceLife@2x.png in Resources */,
+				FA2334802397094000687C05 /* explosion.caf in Resources */,
+				FA23347B2397094000687C05 /* sliceLifeGone@2x.png in Resources */,
 				FA2334512397081300687C05 /* GameScene.sks in Resources */,
+				FA23347A2397094000687C05 /* sliceBomb@2x.png in Resources */,
+				FA2334782397094000687C05 /* sliceFuse.sks in Resources */,
+				FA2334812397094000687C05 /* sliceBackground@2x.png in Resources */,
 				FA23345C2397081500687C05 /* Assets.xcassets in Resources */,
+				FA2334882397094000687C05 /* swoosh1.caf in Resources */,
+				FA23347E2397094000687C05 /* whack.caf in Resources */,
+				FA2334832397094000687C05 /* sliceBombFuse.caf in Resources */,
+				FA2334822397094000687C05 /* sliceHitEnemy.sks in Resources */,
+				FA23347D2397094000687C05 /* wrong.caf in Resources */,
 				FA23345F2397081500687C05 /* LaunchScreen.storyboard in Resources */,
+				FA2334842397094000687C05 /* sliceHitBomb.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
