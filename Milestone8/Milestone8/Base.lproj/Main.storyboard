@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,22 +16,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Note" textLabel="UmB-w4-1vf" detailTextLabel="D1M-Ld-Vsu" style="IBUITableViewCellStyleValue1" id="8vS-ow-m0O">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Note" textLabel="UmB-w4-1vf" style="IBUITableViewCellStyleDefault" id="8vS-ow-m0O">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8vS-ow-m0O" id="zHT-Pq-It0">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UmB-w4-1vf">
-                                            <rect key="frame" x="20" y="12" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D1M-Ld-Vsu">
-                                            <rect key="frame" x="350" y="12" width="44" height="20.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="355" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -68,6 +62,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeQ-jU-0nj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="218.84057971014494" y="98.4375"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="hJT-Tx-ZL8">
+            <objects>
+                <viewController storyboardIdentifier="Detail" id="o5b-np-a1r" customClass="DetailViewController" customModule="Milestone8" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bF8-Pp-kUI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7mP-kz-hJu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7mP-kz-hJu" firstAttribute="top" secondItem="n8O-QX-4Te" secondAttribute="top" id="T8i-s3-W8J"/>
+                            <constraint firstItem="7mP-kz-hJu" firstAttribute="centerX" secondItem="bF8-Pp-kUI" secondAttribute="centerX" id="WgF-xj-A4I"/>
+                            <constraint firstItem="7mP-kz-hJu" firstAttribute="bottom" secondItem="n8O-QX-4Te" secondAttribute="bottom" id="hYO-9R-sfQ"/>
+                            <constraint firstItem="7mP-kz-hJu" firstAttribute="leading" secondItem="n8O-QX-4Te" secondAttribute="leading" id="rDx-Qr-Lqk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n8O-QX-4Te"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="7mP-kz-hJu" id="iBV-ia-DvM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GdQ-DS-Oq6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1872.4637681159422" y="98.4375"/>
         </scene>
     </scenes>
 </document>
