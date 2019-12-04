@@ -57,7 +57,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     }
     
     @objc func showConnectionPrompt() {
-        let ac = UIAlertController(title: "Connect to others", message: nil, preferredStyle: .alert)
+        let ac = UIAlertController(title: "Connect to others", message: nil, preferredStyle: .actionSheet)
         ac.addAction(UIAlertAction(title: "Host a session", style: .default, handler: startHosting))
         ac.addAction(UIAlertAction(title: "Join a session", style: .default, handler: joinSession))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
