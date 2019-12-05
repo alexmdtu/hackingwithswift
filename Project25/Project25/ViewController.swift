@@ -19,15 +19,16 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         title = "Selfie Share"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
+        let disconnectButton = UIBarButtonItem(title: "Disconnect", style: .plain, target: self, action: #selector(disconnect))
+        let importPictureButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
+        
+        navigationItem.rightBarButtonItems = [disconnectButton, importPictureButton]
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
 
         // initialize MCSession
         mcSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
         mcSession?.delegate = self
     }
-    
-    
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
@@ -41,6 +42,11 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         }
 
         return cell
+    }
+    
+    @objc func disconnect() {
+        guard let mcSession = mcSession else { return }
+        mcSession.disconnect()
     }
     
     @objc func importPicture() {
@@ -118,7 +124,12 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 
         case .notConnected:
             print("Not Connected: \(peerID.displayName)")
-
+            DispatchQueue.main.async { [weak self] in
+                let ac = UIAlertController(title: "Disconnection", message: "\(peerID.displayName) disconnected", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self?.present(ac, animated: true)
+            }
+            
         @unknown default:
             print("Unknown state received: \(peerID.displayName)")
         }
