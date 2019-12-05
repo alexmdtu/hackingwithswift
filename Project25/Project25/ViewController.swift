@@ -21,11 +21,12 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         title = "Selfie Share"
         let disconnectButton = UIBarButtonItem(title: "Disconnect", style: .plain, target: self, action: #selector(disconnect))
         let importPictureButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
-        let sendMessageButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(sendMessage))
+        //let sendMessageButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(sendMessage))
         let connectionPromptButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
+        let listAllDevicesButton = UIBarButtonItem(title: "List", style: .plain, target: self, action: #selector(listAllDevices))
         
-        navigationItem.rightBarButtonItems = [disconnectButton, importPictureButton]
-        navigationItem.leftBarButtonItems = [sendMessageButton, connectionPromptButton]
+        navigationItem.rightBarButtonItems = [importPictureButton]
+        navigationItem.leftBarButtonItems = [connectionPromptButton, listAllDevicesButton, disconnectButton]
 
         // initialize MCSession
         mcSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
@@ -44,6 +45,18 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         }
 
         return cell
+    }
+    
+    @objc func listAllDevices() {
+        guard let session = mcSession else { return }
+        
+        var message = ""
+        for peer in session.connectedPeers {
+            message += "\(peer.displayName)\n"
+        }
+        let ac = UIAlertController(title: "Connected to", message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .default))
+        present(ac, animated: true)
     }
     
     @objc func sendMessage() {
