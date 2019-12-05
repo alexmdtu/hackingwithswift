@@ -17,7 +17,32 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        drawSlightlySmilingEmoji()
+        drawTwin()
+    }
+    
+    func drawTwin() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+
+        let img = renderer.image { ctx in
+            // draw T
+            ctx.cgContext.move(to: CGPoint(x: 10, y: 210))
+            ctx.cgContext.addLine(to: CGPoint(x: 118, y: 210))
+            ctx.cgContext.move(to: CGPoint(x: 64, y: 210))
+            ctx.cgContext.addLine(to: CGPoint(x: 64, y: 352))
+            
+            // draw W
+            ctx.cgContext.move(to: CGPoint(x: 138, y: 210))
+            ctx.cgContext.addLine(to: CGPoint(x: 118, y: 210))
+            
+            // draw I
+            
+            // draw N
+            ctx.cgContext.setLineWidth(20)
+            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+            ctx.cgContext.strokePath()
+        }
+        
+        imageView.image = img
     }
     
     func drawSlightlySmilingEmoji() {
