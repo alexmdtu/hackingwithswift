@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        drawRectangle()
+        drawSlightlySmilingEmoji()
     }
     
     func drawSlightlySmilingEmoji() {
@@ -44,7 +44,16 @@ class ViewController: UIViewController {
             ctx.cgContext.setFillColor(UIColor.brown.cgColor)
             ctx.cgContext.addEllipse(in: rightEye)
             ctx.cgContext.drawPath(using: .fill)
+            
             // draw mouth
+            let startPoint = CGPoint(x: 150, y: 350)
+            let endPoint = CGPoint(x: 370, y: 350)
+            let controlPoint = CGPoint(x: 260, y: 420)
+            ctx.cgContext.move(to: startPoint)
+            ctx.cgContext.addQuadCurve(to: endPoint, control: controlPoint)
+            ctx.cgContext.setStrokeColor(UIColor.brown.cgColor)
+            ctx.cgContext.setLineWidth(10)
+            ctx.cgContext.drawPath(using: .stroke)
         }
 
         imageView.image = img
@@ -185,9 +194,9 @@ class ViewController: UIViewController {
 
         switch currentDrawType {
         case 0:
-            drawSlightlySmilingEmoji()()
+            drawSlightlySmilingEmoji()
         case 1:
-            drawRectangle()()
+            drawRectangle()
         case 2:
             drawCheckerboard()
         case 3:
