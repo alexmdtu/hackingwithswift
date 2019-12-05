@@ -22,8 +22,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let importButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
         let topTextButton = UIBarButtonItem(title: "Set top text", style: .plain, target: self, action: #selector(setTopText))
         let bottomTextButton = UIBarButtonItem(title: "Set bottom text", style: .plain, target: self, action: #selector(setBottomText))
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         
-        navigationItem.rightBarButtonItem = importButton
+        navigationItem.rightBarButtonItems = [shareButton, importButton]
         navigationItem.leftBarButtonItems = [topTextButton, bottomTextButton]
     }
 
@@ -109,6 +110,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         ac.addAction(submitAction)
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
+    }
+    
+    @objc func shareTapped() {
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+            print("No image found")
+            return
+        }
+        
+        let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
     }
 }
 
