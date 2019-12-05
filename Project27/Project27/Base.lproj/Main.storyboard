@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,40 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project27" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eJ9-Qj-cwa">
+                                <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdZ-1S-Kvg">
+                                <rect key="frame" x="379" y="1030" width="52" height="30"/>
+                                <state key="normal" title="Redraw"/>
+                                <connections>
+                                    <action selector="redrawTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E9B-fv-OkH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eJ9-Qj-cwa" firstAttribute="centerX" secondItem="gdZ-1S-Kvg" secondAttribute="centerX" id="4rI-jb-7el"/>
+                            <constraint firstItem="gdZ-1S-Kvg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="1030" id="5f3-ph-rk4"/>
+                            <constraint firstItem="eJ9-Qj-cwa" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="811-Ro-e3s"/>
+                            <constraint firstItem="eJ9-Qj-cwa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F9c-HJ-An4"/>
+                            <constraint firstItem="eJ9-Qj-cwa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Hin-pI-g2m"/>
+                            <constraint firstItem="eJ9-Qj-cwa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PxA-Sv-4ma"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="eJ9-Qj-cwa" id="9Mx-qW-Kj3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="139"/>
         </scene>
     </scenes>
 </document>
