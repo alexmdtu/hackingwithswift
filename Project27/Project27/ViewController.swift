@@ -32,11 +32,27 @@ class ViewController: UIViewController {
             
             // draw W
             ctx.cgContext.move(to: CGPoint(x: 138, y: 210))
-            ctx.cgContext.addLine(to: CGPoint(x: 118, y: 210))
+            ctx.cgContext.addLine(to: CGPoint(x: 170, y: 352))
+            ctx.cgContext.move(to: CGPoint(x: 170, y: 352))
+            ctx.cgContext.addLine(to: CGPoint(x: 192, y: 210))
+            ctx.cgContext.move(to: CGPoint(x: 192, y: 210))
+            ctx.cgContext.addLine(to: CGPoint(x: 224, y: 352))
+            ctx.cgContext.move(to: CGPoint(x: 224, y: 352))
+            ctx.cgContext.addLine(to: CGPoint(x: 246, y: 210))
             
             // draw I
+            ctx.cgContext.move(to: CGPoint(x: 320, y: 210))
+            ctx.cgContext.addLine(to: CGPoint(x: 320, y: 352))
             
             // draw N
+            ctx.cgContext.move(to: CGPoint(x: 394, y: 210))
+            ctx.cgContext.addLine(to: CGPoint(x: 394, y: 352))
+            ctx.cgContext.move(to: CGPoint(x: 394, y: 210))
+            ctx.cgContext.addLine(to: CGPoint(x: 448, y: 352))
+            ctx.cgContext.move(to: CGPoint(x: 448, y: 352))
+            ctx.cgContext.addLine(to: CGPoint(x: 448, y: 210))
+
+            // draw all lines
             ctx.cgContext.setLineWidth(20)
             ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
             ctx.cgContext.strokePath()
