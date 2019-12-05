@@ -21,9 +21,11 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         title = "Selfie Share"
         let disconnectButton = UIBarButtonItem(title: "Disconnect", style: .plain, target: self, action: #selector(disconnect))
         let importPictureButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
+        let sendMessageButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(sendMessage))
+        let connectionPromptButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
         
         navigationItem.rightBarButtonItems = [disconnectButton, importPictureButton]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
+        navigationItem.leftBarButtonItems = [sendMessageButton, connectionPromptButton]
 
         // initialize MCSession
         mcSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
@@ -42,6 +44,26 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         }
 
         return cell
+    }
+    
+    @objc func sendMessage() {
+        guard let mcSession = mcSession else { return }
+        
+        let ac = UIAlertController(title: "Send message", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        let submitAction = UIAlertAction(title: "Send", style: .default) { [weak self, weak ac] action in
+            guard let message = ac?.textFields?[0].text else { return }
+            // send message
+            do {
+                try mcSession.send(Data(message.utf8), toPeers: mcSession.connectedPeers, with: .reliable)
+            } catch {
+                let ac = UIAlertController(title: "Send error", message: error.localizedDescription, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self?.present(ac, animated: true)
+            }
+        }
+        ac.addAction(submitAction)
+        present(ac, animated: true)
     }
     
     @objc func disconnect() {
@@ -64,6 +86,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         images.insert(image, at: 0)
         collectionView.reloadData()
         
+        // send data
         guard let mcSession = mcSession else { return }
 
         if mcSession.connectedPeers.count > 0 {
@@ -141,6 +164,8 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
                 self?.images.insert(image, at: 0)
                 self?.collectionView.reloadData()
             }
+//            let message = String(decoding: data, as: UTF8.self)
+//            print(message)
         }
     }
     
