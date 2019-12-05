@@ -13,7 +13,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     var images = [UIImage]()
     var peerID = MCPeerID(displayName: UIDevice.current.name)
     var mcSession: MCSession?
-    var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
+    var mcAdvertiser: MCNearbyServiceAdvertiser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,9 +83,9 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     
     func startHosting(action: UIAlertAction) {
         //guard let mcSession = mcSession else { return }
-        mcAdvertiserAssistant = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "hws-project25")
-        mcAdvertiserAssistant?.delegate = self
-        mcAdvertiserAssistant?.startAdvertisingPeer()
+        mcAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "hws-project25")
+        mcAdvertiser?.delegate = self
+        mcAdvertiser?.startAdvertisingPeer()
         //mcAdvertiserAssistant?.start()
     }
 
@@ -97,7 +97,14 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     }
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        invitationHandler(true, mcSession)
+        let ac = UIAlertController(title: "Allow connection with \(peerID.displayName)?", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Allow", style: .default, handler: { [weak self] _ in
+            invitationHandler(true, self?.mcSession)
+        }))
+        ac.addAction(UIAlertAction(title: "Decline", style: .default, handler: { [weak self] _ in
+            invitationHandler(false, self?.mcSession)
+        }))
+        present(ac, animated: true)
     }
     
     // MC protocol functions
