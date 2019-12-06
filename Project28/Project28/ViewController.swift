@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         secret.text = KeychainWrapper.standard.string(forKey: "SecretMessage") ?? ""
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveSecretMessage))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Change password", style: .plain, target: self, action: #selector(setupPassword))
     }
     
     @objc func saveSecretMessage() {
@@ -41,6 +42,7 @@ class ViewController: UIViewController {
         secret.isHidden = true
         title = "Nothing to see here"
         navigationItem.rightBarButtonItem = nil
+        navigationItem.leftBarButtonItem = nil
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
@@ -75,17 +77,52 @@ class ViewController: UIViewController {
                     if success {
                         self?.unlockSecretMessage()
                     } else {
-                        let ac = UIAlertController(title: "Authentication failed", message: "You could not be verified; please try again.", preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                        self?.present(ac, animated: true)
+                        self?.authFailed()
                     }
                 }
             }
         } else {
-            let ac = UIAlertController(title: "Biometry unavailable", message: "Your device is not configured for biometric authentication.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
+            // fallback if no biometrics available
+            // check if password setup
+            if let password = KeychainWrapper.standard.string(forKey: "Password") {
+                let ac = UIAlertController(title: "Enter password", message: nil, preferredStyle: .alert)
+                ac.addTextField()
+                let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak self, weak ac] _ in
+                    guard let enteredPassword = ac?.textFields?[0].text else { return }
+                    DispatchQueue.main.async {
+                        if enteredPassword == password {
+                            self?.unlockSecretMessage()
+                        } else {
+                            self?.authFailed()
+                        }
+                    }
+                }
+                ac.addAction(submitAction)
+                present(ac, animated: true)
+            } else {
+                setupPassword()
+                DispatchQueue.main.async {
+                    self.unlockSecretMessage()
+                }
+            }
         }
+    }
+    
+    @objc func setupPassword() {
+        let ac = UIAlertController(title: "Setup password", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        let setupAction = UIAlertAction(title: "Setup", style: .default) { [weak ac] _ in
+            guard let password = ac?.textFields?[0].text else { return }
+            KeychainWrapper.standard.set(password, forKey: "Password")
+        }
+        ac.addAction(setupAction)
+        present(ac, animated: true)
+    }
+    
+    func authFailed() {
+        let ac = UIAlertController(title: "Authentication failed", message: "You could not be verified; please try again.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
 }
 
