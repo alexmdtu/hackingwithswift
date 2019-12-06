@@ -14,6 +14,9 @@
 		FA5B33CA239A84C000EEF68E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5B33C8239A84C000EEF68E /* Main.storyboard */; };
 		FA5B33CC239A84C200EEF68E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5B33CB239A84C200EEF68E /* Assets.xcassets */; };
 		FA5B33CF239A84C200EEF68E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5B33CD239A84C200EEF68E /* LaunchScreen.storyboard */; };
+		FA5B33D7239A8A6000EEF68E /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B33D6239A8A6000EEF68E /* BuildingNode.swift */; };
+		FA5B33DA239A9A0F00EEF68E /* hitBuilding.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA5B33D8239A9A0F00EEF68E /* hitBuilding.sks */; };
+		FA5B33DB239A9A0F00EEF68E /* hitPlayer.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA5B33D9239A9A0F00EEF68E /* hitPlayer.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		FA5B33CB239A84C200EEF68E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA5B33CE239A84C200EEF68E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA5B33D0239A84C200EEF68E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA5B33D6239A8A6000EEF68E /* BuildingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
+		FA5B33D8239A9A0F00EEF68E /* hitBuilding.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitBuilding.sks; sourceTree = "<group>"; };
+		FA5B33D9239A9A0F00EEF68E /* hitPlayer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitPlayer.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +67,14 @@
 				FA5B33BE239A84C000EEF68E /* AppDelegate.swift */,
 				FA5B33C0239A84C000EEF68E /* GameScene.sks */,
 				FA5B33C4239A84C000EEF68E /* GameScene.swift */,
+				FA5B33D6239A8A6000EEF68E /* BuildingNode.swift */,
 				FA5B33C6239A84C000EEF68E /* GameViewController.swift */,
 				FA5B33C8239A84C000EEF68E /* Main.storyboard */,
 				FA5B33CB239A84C200EEF68E /* Assets.xcassets */,
 				FA5B33CD239A84C200EEF68E /* LaunchScreen.storyboard */,
 				FA5B33D0239A84C200EEF68E /* Info.plist */,
+				FA5B33D8239A9A0F00EEF68E /* hitBuilding.sks */,
+				FA5B33D9239A9A0F00EEF68E /* hitPlayer.sks */,
 			);
 			path = Project29;
 			sourceTree = "<group>";
@@ -129,6 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5B33CA239A84C000EEF68E /* Main.storyboard in Resources */,
+				FA5B33DA239A9A0F00EEF68E /* hitBuilding.sks in Resources */,
+				FA5B33DB239A9A0F00EEF68E /* hitPlayer.sks in Resources */,
 				FA5B33C1239A84C000EEF68E /* GameScene.sks in Resources */,
 				FA5B33CC239A84C200EEF68E /* Assets.xcassets in Resources */,
 				FA5B33CF239A84C200EEF68E /* LaunchScreen.storyboard in Resources */,
@@ -143,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5B33C5239A84C000EEF68E /* GameScene.swift in Sources */,
+				FA5B33D7239A8A6000EEF68E /* BuildingNode.swift in Sources */,
 				FA5B33C7239A84C000EEF68E /* GameViewController.swift in Sources */,
 				FA5B33BF239A84C000EEF68E /* AppDelegate.swift in Sources */,
 			);
