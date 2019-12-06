@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(saveSecretMessage), name: UIApplication.willResignActiveNotification, object: nil)
         
         title = "Nothing to see here"
+        
     }
     
     func unlockSecretMessage() {
@@ -28,6 +29,8 @@ class ViewController: UIViewController {
         title = "Secret stuff!"
 
         secret.text = KeychainWrapper.standard.string(forKey: "SecretMessage") ?? ""
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveSecretMessage))
     }
     
     @objc func saveSecretMessage() {
@@ -37,6 +40,7 @@ class ViewController: UIViewController {
         secret.resignFirstResponder()
         secret.isHidden = true
         title = "Nothing to see here"
+        navigationItem.rightBarButtonItem = nil
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
