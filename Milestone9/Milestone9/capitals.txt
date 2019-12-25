@@ -1,0 +1,10 @@
+France;Paris
+Germany;Berlin
+Austria;Vienna
+Switzerland;Bern
+Italy;Rome
+Spain;Madrid
+Portugal;Lissabon
+Sweden;Stockholm
+Norway;Oslo
+Romania;Bucharest
