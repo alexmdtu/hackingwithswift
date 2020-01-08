@@ -13,6 +13,7 @@ class ViewController: UICollectionViewController {
     var allPairs = [String]()
     var countries = [String]()
     var capitals = [String]()
+    var allText = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +25,19 @@ class ViewController: UICollectionViewController {
                 allPairs = cardContents.components(separatedBy: "\n")
                 allPairs.removeLast() //remove blank string array element due to last line break
                 print(allPairs)
+                
                 countries = allPairs.map { $0.components(separatedBy: ";")[0] }
                 capitals = allPairs.map { $0.components(separatedBy: ";")[1] }
-                print(countries)
-                print(capitals)
+                
+                allText = countries + capitals
+                allText.shuffle()
+                print(allText)
             }
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allPairs.count
+        return allText.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,7 +48,7 @@ class ViewController: UICollectionViewController {
         cell.layer.borderColor = UIColor.systemGray.cgColor
         cell.layer.borderWidth = 2
         cell.layer.cornerRadius = 7
-        cell.cardText.text = countries[indexPath.item]
+        cell.cardText.text = allText[indexPath.item]
         
         return cell
     }
