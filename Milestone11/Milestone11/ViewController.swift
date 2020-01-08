@@ -52,5 +52,11 @@ class ViewController: UICollectionViewController {
         
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CardCell else { fatalError() }
+        cell.cardText.isHidden.toggle()
+        cell.select.toggle()
+    }
 }
 

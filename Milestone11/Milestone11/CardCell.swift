@@ -10,5 +10,10 @@ import UIKit
 
 class CardCell: UICollectionViewCell {
     @IBOutlet var cardText: UILabel!
-    
+
+    var select = false {
+        didSet {
+            backgroundColor = self.select ? UIColor.systemBlue : UIColor.lightGray
+        }
+    }
 }
