@@ -8,3 +8,7 @@ Portugal;Lissabon
 Sweden;Stockholm
 Norway;Oslo
 Romania;Bucharest
+USA;Washington DC
+Japan;Tokio
+Vietnam;Hanoi
+China;Peking

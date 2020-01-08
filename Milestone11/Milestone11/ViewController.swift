@@ -11,9 +11,10 @@ import UIKit
 class ViewController: UICollectionViewController {
 
     var allPairs = [String]()
-    var countries = [String]()
-    var capitals = [String]()
     var allText = [String]()
+    
+    var selectedCards = [Int]()
+    var revealedCards = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,8 @@ class ViewController: UICollectionViewController {
                 allPairs.removeLast() //remove blank string array element due to last line break
                 print(allPairs)
                 
-                countries = allPairs.map { $0.components(separatedBy: ";")[0] }
-                capitals = allPairs.map { $0.components(separatedBy: ";")[1] }
+                let countries = allPairs.map { $0.components(separatedBy: ";")[0] }
+                let capitals = allPairs.map { $0.components(separatedBy: ";")[1] }
                 
                 allText = countries + capitals
                 allText.shuffle()
@@ -48,15 +49,26 @@ class ViewController: UICollectionViewController {
         cell.layer.borderColor = UIColor.systemGray.cgColor
         cell.layer.borderWidth = 2
         cell.layer.cornerRadius = 7
+        
         cell.cardText.text = allText[indexPath.item]
+        if selectedCards.contains(indexPath.item) {
+            cell.cardText.isHidden = false
+            cell.select = true
+        } else {
+            cell.cardText.isHidden = true
+            cell.select = false
+        }
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CardCell else { fatalError() }
-        cell.cardText.isHidden.toggle()
-        cell.select.toggle()
+        
+        selectedCards.append(indexPath.item)
+        
+        cell.cardText.isHidden = false
+        cell.select = true
     }
 }
 
