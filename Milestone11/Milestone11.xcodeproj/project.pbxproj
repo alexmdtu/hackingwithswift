@@ -13,7 +13,7 @@
 		FA1A89E723C5E9FE0058BE31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1A89E523C5E9FE0058BE31 /* Main.storyboard */; };
 		FA1A89E923C5E9FF0058BE31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA1A89E823C5E9FF0058BE31 /* Assets.xcassets */; };
 		FA1A89EC23C5E9FF0058BE31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1A89EA23C5E9FF0058BE31 /* LaunchScreen.storyboard */; };
-		FA1A89F423C5EC080058BE31 /* capitals.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA1A89F323C5EC080058BE31 /* capitals.txt */; };
+		FA1A89F423C5EC080058BE31 /* capitalsCountries.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA1A89F323C5EC080058BE31 /* capitalsCountries.txt */; };
 		FA1A89F623C5F0EA0058BE31 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1A89F523C5F0EA0058BE31 /* CardCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 		FA1A89E823C5E9FF0058BE31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA1A89EB23C5E9FF0058BE31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA1A89ED23C5E9FF0058BE31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA1A89F323C5EC080058BE31 /* capitals.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = capitals.txt; path = ../../Milestone9/Milestone9/capitals.txt; sourceTree = "<group>"; };
+		FA1A89F323C5EC080058BE31 /* capitalsCountries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = capitalsCountries.txt; path = ../../Milestone9/Milestone9/capitalsCountries.txt; sourceTree = "<group>"; };
 		FA1A89F523C5F0EA0058BE31 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +68,7 @@
 				FA1A89E823C5E9FF0058BE31 /* Assets.xcassets */,
 				FA1A89EA23C5E9FF0058BE31 /* LaunchScreen.storyboard */,
 				FA1A89ED23C5E9FF0058BE31 /* Info.plist */,
-				FA1A89F323C5EC080058BE31 /* capitals.txt */,
+				FA1A89F323C5EC080058BE31 /* capitalsCountries.txt */,
 			);
 			path = Milestone11;
 			sourceTree = "<group>";
@@ -134,7 +134,7 @@
 				FA1A89EC23C5E9FF0058BE31 /* LaunchScreen.storyboard in Resources */,
 				FA1A89E923C5E9FF0058BE31 /* Assets.xcassets in Resources */,
 				FA1A89E723C5E9FE0058BE31 /* Main.storyboard in Resources */,
-				FA1A89F423C5EC080058BE31 /* capitals.txt in Resources */,
+				FA1A89F423C5EC080058BE31 /* capitalsCountries.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
