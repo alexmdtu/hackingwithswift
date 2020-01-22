@@ -8,6 +8,8 @@
 
 import UIKit
 import SafariServices
+import CoreSpotlight
+import MobileCoreServices
 
 class ViewController: UITableViewController {
 
@@ -110,11 +112,31 @@ class ViewController: UITableViewController {
     }
     
     func index(item: Int) {
+        let project = projects[item]
         
+        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+        attributeSet.title = project[0]
+        attributeSet.contentDescription = project[1]
+        
+        let item = CSSearchableItem(uniqueIdentifier: "\(item)", domainIdentifier: "com.hackingwithswift", attributeSet: attributeSet)
+        item.expirationDate = Date.distantFuture
+        CSSearchableIndex.default().indexSearchableItems([item]) { error in
+            if let error = error {
+                print("Indexing error: \(error.localizedDescription)")
+            } else {
+                print("Search item successfully indexed")
+            }
+        }
     }
     
     func deindex(item: Int) {
-        
+        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: ["\(item)"]) { error in
+            if let error = error {
+                print("Deindexing error: \(error.localizedDescription)")
+            } else {
+                print("Search item successfully removed!")
+            }
+        }
     }
 }
 
