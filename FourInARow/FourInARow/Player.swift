@@ -6,8 +6,8 @@
 //  Copyright © 2020 Alexander Tu. All rights reserved.
 //
 
-import UIKit
 import GameplayKit
+import UIKit
 
 class Player: NSObject, GKGameModelPlayer {
     var chip: ChipColor
@@ -27,7 +27,7 @@ class Player: NSObject, GKGameModelPlayer {
     
     init(chip: ChipColor) {
         self.chip = chip
-        self.playerId = chip.rawValue
+        playerId = chip.rawValue
         
         if chip == .red {
             color = .red

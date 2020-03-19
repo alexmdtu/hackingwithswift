@@ -6,8 +6,8 @@
 //  Copyright © 2020 Alexander Tu. All rights reserved.
 //
 
-import UIKit
 import GameplayKit
+import UIKit
 
 enum ChipColor: Int {
     case none = 0
@@ -15,7 +15,7 @@ enum ChipColor: Int {
     case black
 }
 
-class Board: NSObject {
+class Board: NSObject, GKGameModel {
     static var width = 7
     static var height = 6
     
@@ -104,5 +104,38 @@ class Board: NSObject {
         if chip(inColumn: col + (moveX * 3), row: row + (moveY * 3)) != initialChip { return false }
         
         return true
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Board()
+        copy.setGameModel(self)
+        return copy
+    }
+    
+    func setGameModel(_ gameModel: GKGameModel) {
+        if let board = gameModel as? Board {
+            slots = board.slots
+            currentPlayer = board.currentPlayer
+        }
+    }
+    
+    func gameModelUpdates(for player: GKGameModelPlayer) -> [GKGameModelUpdate]? {
+        if let playerObject = player as? Player {
+            if isWin(for: playerObject) || isWin(for: playerObject.opponent) {
+                return nil
+            }
+            
+            var moves = [Move]()
+            
+            for column in 0 ..< Board.width {
+                if canMove(in: column) {
+                    moves.append(Move(column: column))
+                }
+            }
+            
+            return moves
+        }
+        
+        return nil
     }
 }

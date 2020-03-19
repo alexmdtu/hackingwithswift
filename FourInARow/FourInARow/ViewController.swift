@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     @IBOutlet var columnButtons: [UIButton]!
     
     var placedChips = [[UIView]]()
@@ -43,7 +42,7 @@ class ViewController: UIViewController {
         let size = min(button.frame.width, button.frame.height / 6)
         let rect = CGRect(x: 0, y: 0, width: size, height: size)
         
-        if (placedChips[column].count < row + 1) {
+        if placedChips[column].count < row + 1 {
             let newChip = UIView()
             newChip.frame = rect
             newChip.isUserInteractionEnabled = false
@@ -77,7 +76,7 @@ class ViewController: UIViewController {
     }
     
     func continueGame() {
-        var gameOverTitle: String? = nil
+        var gameOverTitle: String?
         
         if board.isWin(for: board.currentPlayer) {
             gameOverTitle = "\(board.currentPlayer.name) Wins!"
@@ -87,7 +86,7 @@ class ViewController: UIViewController {
         
         if gameOverTitle != nil {
             let alert = UIAlertController(title: gameOverTitle, message: nil, preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Play Again", style: .default) { [unowned self] action in
+            let alertAction = UIAlertAction(title: "Play Again", style: .default) { [unowned self] _ in
                 self.resetBoard()
             }
             
@@ -100,7 +99,6 @@ class ViewController: UIViewController {
         board.currentPlayer = board.currentPlayer.opponent
         updateUI()
     }
-
     
     // MARK: - IBActions
     
@@ -113,6 +111,4 @@ class ViewController: UIViewController {
             continueGame()
         }
     }
-
 }
-
