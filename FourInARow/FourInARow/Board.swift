@@ -21,6 +21,13 @@ class Board: NSObject, GKGameModel {
     
     var slots = [ChipColor]()
     var currentPlayer: Player
+    var players: [GKGameModelPlayer]? {
+        return Player.allPlayers
+    }
+
+    var activePlayer: GKGameModelPlayer? {
+        return currentPlayer
+    }
     
     override init() {
         currentPlayer = Player.allPlayers[0]
@@ -137,5 +144,24 @@ class Board: NSObject, GKGameModel {
         }
         
         return nil
+    }
+    
+    func apply(_ gameModelUpdate: GKGameModelUpdate) {
+        if let move = gameModelUpdate as? Move {
+            add(chip: currentPlayer.chip, in: move.column)
+            currentPlayer = currentPlayer.opponent
+        }
+    }
+    
+    func score(for player: GKGameModelPlayer) -> Int {
+        if let playerObject = player as? Player {
+            if isWin(for: playerObject) {
+                return 1000
+            } else if isWin(for: playerObject.opponent) {
+                return -1000
+            }
+        }
+
+        return 0
     }
 }
