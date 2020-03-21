@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA4CC7EA24266C6900BEB0CA /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4CC7E524266C6900BEB0CA /* spark.png */; };
+		FA4CC7EB24266C6900BEB0CA /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA4CC7E624266C6900BEB0CA /* coin.wav */; };
+		FA4CC7EC24266C6900BEB0CA /* PlayerExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA4CC7E724266C6900BEB0CA /* PlayerExplosion.sks */; };
+		FA4CC7ED24266C6900BEB0CA /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA4CC7E824266C6900BEB0CA /* explosion.wav */; };
+		FA4CC7EE24266C6900BEB0CA /* music.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FA4CC7E924266C6900BEB0CA /* music.m4a */; };
 		FA511E9924242A93008C8A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA511E9824242A93008C8A08 /* AppDelegate.swift */; };
 		FA511E9B24242A93008C8A08 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA511E9A24242A93008C8A08 /* GameScene.sks */; };
 		FA511E9F24242A93008C8A08 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA511E9E24242A93008C8A08 /* GameScene.swift */; };
@@ -17,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA4CC7E524266C6900BEB0CA /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		FA4CC7E624266C6900BEB0CA /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
+		FA4CC7E724266C6900BEB0CA /* PlayerExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerExplosion.sks; sourceTree = "<group>"; };
+		FA4CC7E824266C6900BEB0CA /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		FA4CC7E924266C6900BEB0CA /* music.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = music.m4a; sourceTree = "<group>"; };
 		FA511E9524242A92008C8A08 /* Project36-CrashyPlane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project36-CrashyPlane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA511E9824242A93008C8A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA511E9A24242A93008C8A08 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -39,6 +49,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA4CC7E424266C4900BEB0CA /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				FA4CC7E624266C6900BEB0CA /* coin.wav */,
+				FA4CC7E824266C6900BEB0CA /* explosion.wav */,
+				FA4CC7E924266C6900BEB0CA /* music.m4a */,
+				FA4CC7E724266C6900BEB0CA /* PlayerExplosion.sks */,
+				FA4CC7E524266C6900BEB0CA /* spark.png */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
 		FA511E8C24242A92008C8A08 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +80,7 @@
 		FA511E9724242A92008C8A08 /* Project36-CrashyPlane */ = {
 			isa = PBXGroup;
 			children = (
+				FA4CC7E424266C4900BEB0CA /* Content */,
 				FA511E9824242A93008C8A08 /* AppDelegate.swift */,
 				FA511E9A24242A93008C8A08 /* GameScene.sks */,
 				FA511E9E24242A93008C8A08 /* GameScene.swift */,
@@ -128,8 +151,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4CC7EA24266C6900BEB0CA /* spark.png in Resources */,
 				FA511EA424242A93008C8A08 /* Main.storyboard in Resources */,
+				FA4CC7EE24266C6900BEB0CA /* music.m4a in Resources */,
+				FA4CC7ED24266C6900BEB0CA /* explosion.wav in Resources */,
 				FA511E9B24242A93008C8A08 /* GameScene.sks in Resources */,
+				FA4CC7EB24266C6900BEB0CA /* coin.wav in Resources */,
+				FA4CC7EC24266C6900BEB0CA /* PlayerExplosion.sks in Resources */,
 				FA511EA624242A94008C8A08 /* Assets.xcassets in Resources */,
 				FA511EA924242A94008C8A08 /* LaunchScreen.storyboard in Resources */,
 			);
