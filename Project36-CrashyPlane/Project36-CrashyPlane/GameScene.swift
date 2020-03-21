@@ -17,6 +17,7 @@ class GameScene: SKScene {
         createSky()
         createBackground()
         createGround()
+        startRocks()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {}
@@ -89,5 +90,63 @@ class GameScene: SKScene {
             
             ground.run(moveForever)
         }
+    }
+    
+    func createRocks() {
+        // create rock sprites, rotate top one ind flip it horizontally
+        let rockTexture = SKTexture(imageNamed: "rock")
+        
+        let topRock = SKSpriteNode(texture: rockTexture)
+        topRock.zRotation = .pi
+        topRock.xScale = -1.0
+        
+        let bottomRock = SKSpriteNode(texture: rockTexture)
+        
+        topRock.zPosition = -20
+        bottomRock.zPosition = -20
+        
+        // create score detector to detect player passing rocks
+        let rockCollision = SKSpriteNode(color: UIColor.red, size: CGSize(width: 32, height: frame.height))
+        rockCollision.name = "scoreDetect"
+        
+        addChild(topRock)
+        addChild(bottomRock)
+        addChild(rockCollision)
+        
+        // create random y position for position of safe gap between rocks
+        let xPosition = frame.width + topRock.frame.width
+        
+        let max = CGFloat(frame.height / 3)
+        let yPosition = CGFloat.random(in: -50 ... max)
+        
+        // this next value affects the width of the gap between rocks
+        // make it smaller to make your game harder – if you're feeling evil!
+        let rockDistance: CGFloat = 70
+        
+        // position rocks to the right edge off the screen
+        topRock.position = CGPoint(x: xPosition, y: yPosition + topRock.size.height + rockDistance)
+        bottomRock.position = CGPoint(x: xPosition, y: yPosition - rockDistance)
+        rockCollision.position = CGPoint(x: xPosition + (rockCollision.size.width * 2), y: frame.midY)
+        
+        let endPosition = frame.width + (topRock.frame.width * 2)
+        
+        // animate rocks crossing screen and remove them after leaving screen
+        let moveAction = SKAction.moveBy(x: -endPosition, y: 0, duration: 6.2)
+        let moveSequence = SKAction.sequence([moveAction, SKAction.removeFromParent()])
+        topRock.run(moveSequence)
+        bottomRock.run(moveSequence)
+        rockCollision.run(moveSequence)
+    }
+    
+    func startRocks() {
+        let create = SKAction.run { [unowned self] in
+            self.createRocks()
+        }
+        
+        let wait = SKAction.wait(forDuration: 3)
+        let sequence = SKAction.sequence([create, wait])
+        let repeatForever = SKAction.repeatForever(sequence)
+        
+        run(repeatForever)
     }
 }
