@@ -24,6 +24,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var gameState = GameState.showingLogo
     
+    let rockTexture = SKTexture(imageNamed: "rock")
+    var rockPhysics: SKPhysicsBody!
+    let explosion = SKEmitterNode(fileNamed: "PlayerExplosion")
+    
     var score = 0 {
         didSet {
             scoreLabel.text = "SCORE: \(score)"
@@ -40,6 +44,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
         physicsWorld.contactDelegate = self
+        
+        rockPhysics = SKPhysicsBody(texture: rockTexture, size: rockTexture.size())
         
         if let musicURL = Bundle.main.url(forResource: "music", withExtension: "m4a") {
             backgroundMusic = SKAudioNode(url: musicURL)
@@ -207,13 +213,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let rockTexture = SKTexture(imageNamed: "rock")
         
         let topRock = SKSpriteNode(texture: rockTexture)
-        topRock.physicsBody = SKPhysicsBody(texture: rockTexture, size: rockTexture.size())
+        topRock.physicsBody = rockPhysics.copy() as? SKPhysicsBody
         topRock.physicsBody?.isDynamic = false
         topRock.zRotation = .pi
         topRock.xScale = -1.0
         
         let bottomRock = SKSpriteNode(texture: rockTexture)
-        bottomRock.physicsBody = SKPhysicsBody(texture: rockTexture, size: rockTexture.size())
+        bottomRock.physicsBody = rockPhysics.copy() as? SKPhysicsBody
         bottomRock.physicsBody?.isDynamic = false
         
         topRock.zPosition = -20
