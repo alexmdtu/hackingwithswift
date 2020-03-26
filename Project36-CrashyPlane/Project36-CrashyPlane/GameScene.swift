@@ -9,7 +9,7 @@
 import GameplayKit
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var player: SKSpriteNode!
     var scoreLabel: SKLabelNode!
     
@@ -26,9 +26,56 @@ class GameScene: SKScene {
         createGround()
         startRocks()
         createScore()
+        
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+        physicsWorld.contactDelegate = self
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {}
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 20))
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        let value = player.physicsBody!.velocity.dy * 0.001
+        let rotate = SKAction.rotate(toAngle: value, duration: 0.1)
+        
+        player.run(rotate)
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if contact.bodyA.node?.name == "scoreDetect" || contact.bodyB.node?.name == "scoreDetect" {
+            if contact.bodyA.node == player {
+                contact.bodyB.node?.removeFromParent()
+            } else {
+                contact.bodyA.node?.removeFromParent()
+            }
+
+            let sound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: false)
+            run(sound)
+
+            score += 1
+
+            return
+        }
+
+        guard contact.bodyA.node != nil && contact.bodyB.node != nil else {
+            return
+        }
+        
+        if contact.bodyA.node == player || contact.bodyB.node == player {
+            if let explosion = SKEmitterNode(fileNamed: "PlayerExplosion") {
+                explosion.position = player.position
+                addChild(explosion)
+            }
+
+            let sound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
+            run(sound)
+
+            player.removeFromParent()
+            speed = 0
+        }
+    }
     
     func createPlayer() {
         let playerTexture = SKTexture(imageNamed: "player-1")
@@ -37,6 +84,11 @@ class GameScene: SKScene {
         player.position = CGPoint(x: frame.width / 6, y: frame.height * 0.75)
         
         addChild(player)
+        
+        player.physicsBody = SKPhysicsBody(texture: playerTexture, size: playerTexture.size())
+        player.physicsBody!.contactTestBitMask = player.physicsBody!.collisionBitMask
+        player.physicsBody?.isDynamic = true
+        player.physicsBody?.collisionBitMask = 0
         
         let frame2 = SKTexture(imageNamed: "player-2")
         let frame3 = SKTexture(imageNamed: "player-3")
@@ -89,6 +141,10 @@ class GameScene: SKScene {
             let ground = SKSpriteNode(texture: groundTexture)
             ground.zPosition = -10
             ground.position = CGPoint(x: groundTexture.size().width / 2.0 + (groundTexture.size().width * CGFloat(i)), y: groundTexture.size().height / 2)
+            
+            ground.physicsBody = SKPhysicsBody(texture: ground.texture!, size: ground.texture!.size())
+            ground.physicsBody?.isDynamic = false
+            
             addChild(ground)
             
             let moveLeft = SKAction.moveBy(x: -groundTexture.size().width, y: 0, duration: 5)
@@ -105,16 +161,22 @@ class GameScene: SKScene {
         let rockTexture = SKTexture(imageNamed: "rock")
         
         let topRock = SKSpriteNode(texture: rockTexture)
+        topRock.physicsBody = SKPhysicsBody(texture: rockTexture, size: rockTexture.size())
+        topRock.physicsBody?.isDynamic = false
         topRock.zRotation = .pi
         topRock.xScale = -1.0
         
         let bottomRock = SKSpriteNode(texture: rockTexture)
+        bottomRock.physicsBody = SKPhysicsBody(texture: rockTexture, size: rockTexture.size())
+        bottomRock.physicsBody?.isDynamic = false
         
         topRock.zPosition = -20
         bottomRock.zPosition = -20
         
         // create score detector to detect player passing rocks
         let rockCollision = SKSpriteNode(color: UIColor.red, size: CGSize(width: 32, height: frame.height))
+        rockCollision.physicsBody = SKPhysicsBody(rectangleOf: rockCollision.size)
+        rockCollision.physicsBody?.isDynamic = false
         rockCollision.name = "scoreDetect"
         
         addChild(topRock)
