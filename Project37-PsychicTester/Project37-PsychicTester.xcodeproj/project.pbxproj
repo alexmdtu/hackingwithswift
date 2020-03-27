@@ -23,6 +23,7 @@
 		FA93B5AC242D043100D7F761 /* PhantomFromSpace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA93B5AA242D043100D7F761 /* PhantomFromSpace.mp3 */; };
 		FA93B5AD242D043100D7F761 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA93B5AB242D043100D7F761 /* README.txt */; };
 		FAF64D3A242E44EA002F3CEC /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF64D39242E44EA002F3CEC /* CardViewController.swift */; };
+		FAF64D3C242E9F0B002F3CEC /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF64D3B242E9F0B002F3CEC /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		FA93B5AA242D043100D7F761 /* PhantomFromSpace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PhantomFromSpace.mp3; sourceTree = "<group>"; };
 		FA93B5AB242D043100D7F761 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		FAF64D39242E44EA002F3CEC /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		FAF64D3B242E9F0B002F3CEC /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				FA93B572242D03C900D7F761 /* SceneDelegate.swift */,
 				FA93B574242D03C900D7F761 /* ViewController.swift */,
 				FAF64D39242E44EA002F3CEC /* CardViewController.swift */,
+				FAF64D3B242E9F0B002F3CEC /* GradientView.swift */,
 				FA93B576242D03C900D7F761 /* Main.storyboard */,
 				FA93B579242D03CC00D7F761 /* Assets.xcassets */,
 				FA93B57B242D03CC00D7F761 /* LaunchScreen.storyboard */,
@@ -310,6 +313,7 @@
 			files = (
 				FAF64D3A242E44EA002F3CEC /* CardViewController.swift in Sources */,
 				FA93B575242D03C900D7F761 /* ViewController.swift in Sources */,
+				FAF64D3C242E9F0B002F3CEC /* GradientView.swift in Sources */,
 				FA93B571242D03C900D7F761 /* AppDelegate.swift in Sources */,
 				FA93B573242D03C900D7F761 /* SceneDelegate.swift in Sources */,
 			);
