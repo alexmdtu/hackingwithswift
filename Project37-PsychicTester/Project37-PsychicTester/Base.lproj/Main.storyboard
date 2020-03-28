@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,9 +45,11 @@
                             <constraint firstItem="NMR-PK-B1y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="abg-q6-UUI"/>
                             <constraint firstItem="NMR-PK-B1y" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gQA-v5-ZzC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="j72-bw-AR7"/>
                     </view>
                     <connections>
                         <outlet property="cardContainer" destination="Flc-fH-7sX" id="pG2-ff-LhI"/>
+                        <outlet property="gradientView" destination="NMR-PK-B1y" id="Msh-4q-4tZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
