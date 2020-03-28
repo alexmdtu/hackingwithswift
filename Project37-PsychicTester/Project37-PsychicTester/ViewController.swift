@@ -6,29 +6,37 @@
 //  Copyright © 2020 Alexander Tu. All rights reserved.
 //
 
-import UIKit
 import AVFoundation
+import UIKit
+import WatchConnectivity
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WCSessionDelegate {
     @IBOutlet var cardContainer: UIView!
     @IBOutlet var gradientView: GradientView!
-    
+
     var allCards = [CardViewController]()
     var music: AVAudioPlayer!
+    var lastMessage: CFAbsoluteTime = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         createParticles()
         loadCards()
-        
+
         view.backgroundColor = UIColor.red
 
         UIView.animate(withDuration: 20, delay: 0, options: [.allowUserInteraction, .autoreverse, .repeat], animations: {
             self.view.backgroundColor = UIColor.blue
         })
-        
+
         playMusic()
+
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
     }
 
     @objc func loadCards() {
@@ -103,7 +111,7 @@ class ViewController: UIViewController {
 
         perform(#selector(loadCards), with: nil, afterDelay: 2)
     }
-    
+
     func createParticles() {
         let particleEmitter = CAEmitterLayer()
 
@@ -128,7 +136,7 @@ class ViewController: UIViewController {
 
         gradientView.layer.addSublayer(particleEmitter)
     }
-    
+
     func playMusic() {
         if let musicURL = Bundle.main.url(forResource: "PhantomFromSpace", withExtension: "mp3") {
             if let audioPlayer = try? AVAudioPlayer(contentsOf: musicURL) {
@@ -138,7 +146,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
 
@@ -153,7 +161,37 @@ class ViewController: UIViewController {
                         card.isCorrect = true
                     }
                 }
+                if card.isCorrect {
+                    sendWatchMessage()
+                }
             }
         }
+    }
+
+    // MARK: - Watch Session
+
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {}
+
+    func sessionDidBecomeInactive(_ session: WCSession) {}
+
+    func sessionDidDeactivate(_ session: WCSession) {}
+    
+    func sendWatchMessage() {
+        let currentTime = CFAbsoluteTimeGetCurrent()
+
+        // if less than half a second has passed, bail out
+        if lastMessage + 0.5 > currentTime {
+            return
+        }
+
+        // send a message to the watch if it's reachable
+        if (WCSession.default.isReachable) {
+            // this is a meaningless message, but it's enough for our purposes
+            let message = ["Message": "Hello"]
+            WCSession.default.sendMessage(message, replyHandler: nil)
+        }
+
+        // update our rate limiting property
+        lastMessage = CFAbsoluteTimeGetCurrent()
     }
 }
