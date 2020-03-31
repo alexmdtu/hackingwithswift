@@ -72,6 +72,31 @@ class ViewController: UITableViewController {
 
         let formatter = ISO8601DateFormatter()
         commit.date = formatter.date(from: json["commit"]["committer"]["date"].stringValue) ?? Date()
+        
+        // add author to commit
+        var commitAuthor: Author!
+
+        // see if this author exists already
+        let authorRequest = Author.createFetchRequest()
+        authorRequest.predicate = NSPredicate(format: "name == %@", json["commit"]["committer"]["name"].stringValue)
+
+        if let authors = try? container.viewContext.fetch(authorRequest) {
+            if authors.count > 0 {
+                // we have this author already
+                commitAuthor = authors[0]
+            }
+        }
+
+        if commitAuthor == nil {
+            // we didn't find a saved author - create a new one!
+            let author = Author(context: container.viewContext)
+            author.name = json["commit"]["committer"]["name"].stringValue
+            author.email = json["commit"]["committer"]["email"].stringValue
+            commitAuthor = author
+        }
+
+        // use the author, either saved or new
+        commit.author = commitAuthor
     }
 
     func loadSavedData() {
@@ -105,6 +130,10 @@ class ViewController: UITableViewController {
             self.commitPredicate = NSPredicate(format: "date > %@", twelveHoursAgo as NSDate)
             self.loadSavedData()
         })
+        ac.addAction(UIAlertAction(title: "Show only Durian commits", style: .default) { [unowned self] _ in
+            self.commitPredicate = NSPredicate(format: "author.name == 'Joe Groff'")
+            self.loadSavedData()
+        })
         ac.addAction(UIAlertAction(title: "Show all commits", style: .default) { [unowned self] _ in
             self.commitPredicate = nil
             self.loadSavedData()
@@ -129,8 +158,15 @@ class ViewController: UITableViewController {
 
         let commit = commits[indexPath.row]
         cell.textLabel?.text = commit.message
-        cell.detailTextLabel?.text = commit.date.description
+        cell.detailTextLabel!.text = "By \(commit.author.name) on \(commit.date.description)"
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            vc.detailItem = commits[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

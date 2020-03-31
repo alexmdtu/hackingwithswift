@@ -2,7 +2,7 @@
 //  Commit+CoreDataProperties.swift
 //  Project38-GitHubCommits
 //
-//  Created by Alexander Tu on 29.03.20.
+//  Created by Alexander Tu on 31.03.20.
 //  Copyright © 2020 Alexander Tu. All rights reserved.
 //
 //
@@ -21,5 +21,6 @@ extension Commit {
     @NSManaged public var message: String
     @NSManaged public var sha: String
     @NSManaged public var url: String
+    @NSManaged public var author: Author
 
 }
