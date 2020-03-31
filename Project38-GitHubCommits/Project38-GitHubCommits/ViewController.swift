@@ -18,6 +18,8 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view.
         container = NSPersistentContainer(name: "Project38")
         container.loadPersistentStores { _, error in
+            self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            
             if let error = error {
                 print("Unresolved eror \(error)")
             }
