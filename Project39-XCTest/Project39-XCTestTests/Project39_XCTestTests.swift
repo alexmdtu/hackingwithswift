@@ -20,6 +20,6 @@ class Project39_XCTestTests: XCTestCase {
     
     func testAllWordsLoaded() {
         let playData = PlayData()
-        XCTAssertEqual(playData.allWords.count, 0, "allWords must be 0")
+        XCTAssertEqual(playData.allWords.count, 384001, "allWords must be 384001")
     }
 }
