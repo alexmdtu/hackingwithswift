@@ -16,6 +16,7 @@
 		FADFF5B124352B00009E500A /* Project39_XCTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFF5B024352B00009E500A /* Project39_XCTestTests.swift */; };
 		FADFF5BC24352B00009E500A /* Project39_XCTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFF5BB24352B00009E500A /* Project39_XCTestUITests.swift */; };
 		FADFF5CA24352B1F009E500A /* plays.txt in Resources */ = {isa = PBXBuildFile; fileRef = FADFF5C924352B1F009E500A /* plays.txt */; };
+		FADFF5CC24352FBF009E500A /* PlayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFF5CB24352FBF009E500A /* PlayData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		FADFF5BB24352B00009E500A /* Project39_XCTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project39_XCTestUITests.swift; sourceTree = "<group>"; };
 		FADFF5BD24352B00009E500A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FADFF5C924352B1F009E500A /* plays.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plays.txt; sourceTree = "<group>"; };
+		FADFF5CB24352FBF009E500A /* PlayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				FADFF59B24352AFC009E500A /* SceneDelegate.swift */,
 				FADFF59D24352AFC009E500A /* ViewController.swift */,
 				FADFF59F24352AFC009E500A /* Main.storyboard */,
+				FADFF5CB24352FBF009E500A /* PlayData.swift */,
 				FADFF5A224352B00009E500A /* Assets.xcassets */,
 				FADFF5A424352B00009E500A /* LaunchScreen.storyboard */,
 				FADFF5A724352B00009E500A /* Info.plist */,
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FADFF59E24352AFC009E500A /* ViewController.swift in Sources */,
+				FADFF5CC24352FBF009E500A /* PlayData.swift in Sources */,
 				FADFF59A24352AFC009E500A /* AppDelegate.swift in Sources */,
 				FADFF59C24352AFC009E500A /* SceneDelegate.swift in Sources */,
 			);
