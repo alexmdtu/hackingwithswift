@@ -18,7 +18,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(changeFilter))
-        
+
         container = NSPersistentContainer(name: "Project38")
         container.loadPersistentStores { _, error in
             self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
@@ -44,7 +44,9 @@ class ViewController: UITableViewController {
     }
 
     @objc func fetchCommits() {
-        if let data = try? String(contentsOf: URL(string: "https://api.github.com/repos/apple/swift/commits?per_page=100")!) {
+        let newestCommitDate = getNewestCommitDate()
+
+        if let data = try? String(contentsOf: URL(string: "https://api.github.com/repos/apple/swift/commits?per_page=100&since=\(newestCommitDate)")!) {
             // give the data to SwiftyJSON to parse
             let jsonCommits = JSON(parseJSON: data)
 
@@ -72,7 +74,7 @@ class ViewController: UITableViewController {
 
         let formatter = ISO8601DateFormatter()
         commit.date = formatter.date(from: json["commit"]["committer"]["date"].stringValue) ?? Date()
-        
+
         // add author to commit
         var commitAuthor: Author!
 
@@ -113,7 +115,7 @@ class ViewController: UITableViewController {
             print("Fetch failed")
         }
     }
-    
+
     @objc func changeFilter() {
         let ac = UIAlertController(title: "Filter commits…", message: nil, preferredStyle: .actionSheet)
 
@@ -143,6 +145,23 @@ class ViewController: UITableViewController {
         present(ac, animated: true)
     }
 
+    func getNewestCommitDate() -> String {
+        let formatter = ISO8601DateFormatter()
+
+        let newest = Commit.createFetchRequest()
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        newest.sortDescriptors = [sort]
+        newest.fetchLimit = 1
+
+        if let commits = try? container.viewContext.fetch(newest) {
+            if commits.count > 0 {
+                return formatter.string(from: commits[0].date.addingTimeInterval(1))
+            }
+        }
+
+        return formatter.string(from: Date(timeIntervalSince1970: 0))
+    }
+
     // MARK: - Table View Functions
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -162,11 +181,22 @@ class ViewController: UITableViewController {
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.detailItem = commits[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let commit = commits[indexPath.row]
+            container.viewContext.delete(commit)
+            commits.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+
+            saveContext()
         }
     }
 }
